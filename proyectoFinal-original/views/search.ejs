@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es"> 
+
+<!-- Include Head -->
+
+<%- include('./partials/head') %>
+
+<body>
+	
+<%- include('./partials/header') %>
+
+	<!-- Novedades -->
+<div class="container products-wrapper">
+<div class="row">
+	<div class="col-12">
+		<h2 class="products-title">Resultados de tu búsqueda</h2>
+	</div>
+
+	<!-- Show the "ultimos" products -->
+	<h2 class="col-12"> 
+
+		<% if (search) { %>
+			<div class="search-results">
+
+			<p class="filtrando"> Filtrando buzos " <%= search %> " ...  </p>
+
+			<h2> Disponibles en stock:</h2>
+
+			<h3> Buzo <%= search %> sucursal Unicenter, talle M</h3>
+			<h3> Buzo <%= search %> sucursal Alto Palermo, talle L</h3>
+			<h3> Buzo <%= search %> sucursal Recoleta Mall, talle L</h3>
+
+		<% } else if (!search) { %>
+
+			<h2 class="ingreso">Por favor ingrese un producto para poder buscarlo</h2>
+
+		<% } %>
+	 
+			</div>
+
+	</h2>
+	</div>
+</div>
+
+<%- include('./partials/footer') %>
+
+</body>
+
+</html>
+

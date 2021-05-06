@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<%- include('./partials/head') %>
+
+<body>
+	
+<%- include('./partials/header') %>
+
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		
+		<div class="d-flex align-items-center">
+
+			<h2 class="products-title"> 
+				 Buzo <%= buzos_buzos[idSearch].marca + ' ' %> Modelo <%= buzos_buzos[idSearch].modelo %>  
+			</h2> 
+			<!-- <p class="product-detail-description">
+				<a href="/product/productAdd"> Agregar nuevo producto </a>
+			</p> -->
+		</div>
+		<p class="product-detail-description">
+			<a href="/product/productAdd/:id"> Agregar nuevo producto </a>
+		</p>
+		<div class="product-detail">
+			<div class="row">
+				<article class="col-12 col-lg-8 product-detail-info">
+					<a href="/product/productEdit/<%= buzos_buzos[idSearch].id %> ">
+						<i class="fas fa-edit fa-4x"> </i> 
+					</a> 
+					<img src="<%= buzos_buzos[idSearch].imagen%>" alt="" class="product-detail-img">
+					<p class="product-detail-description"> Descripción: <%= buzos_buzos[idSearch].descripcion %> </p>
+				</article>
+
+				<div class="col-12 col-lg-4">
+				
+				<section class="comments">					
+					<% for (let i = 0; i < buzos_buzos[idSearch].comentarios.length; i++) { %> 
+
+							<article>
+								
+								<a href="/users/profile/<%= buzos_buzos[idSearch].comentarios[i].idUsuario %> ">
+								<img src="<%=  buzos_buzos[idSearch].comentarios[i].imagen %> " alt="">
+								</a>
+								<div class="data">
+									<p class="user">
+									<strong> <a href="/users/profile/<%= buzos_buzos[idSearch].comentarios[i].idUsuario %> "> 
+										<%= buzos_buzos[idSearch].comentarios[i].usuarioQueComento %>
+									</a> </strong>
+
+									<%= buzos_buzos[idSearch].comentarios[i].comentario %>
+									</p>
+								</div>
+							</article>
+
+				<% } %>
+
+					</section>
+
+					<form class="form" action="/" method="GET">
+						<input class="form-input" type="text" value="" placeholder="Escribe aqui tu comentario">
+						<button type="submit" class="buy-now-button"> AGREGAR COMENTARIO</button> 
+					</form>
+
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /product detail -->
+
+	
+<%- include('./partials/footer') %>
+
+</body>	
+</html>

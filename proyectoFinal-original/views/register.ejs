@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<%- include('./partials/head') %>
+
+<body>
+
+<%- include('./partials/header') %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Completá tus datos para crear tu cuenta</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			
+				<form class="font-impact-white" action="/" method="GET">
+
+					<p>
+					<label for="nombre"> Nombre:</label>
+					<input type="text" name="nombre" id="nombre">
+					</p>
+
+					<p>
+					<label for="apellido"> Apellido:</label>
+					<input type="text" name="apellido" id="apellido">
+					</p>
+
+					<p>
+					<label for="nacimiento"> Fecha de nacimiento:</label>
+					<input type="date" name="nacimiento" id="nacimiento">
+					</p>
+
+					<p>
+					<label for="dni"> DNI:</label>
+					<input type="text" name="dni" id="dni">
+					</p>
+
+					<p>
+					<label for="email"> Email:</label>
+					<input type="text" name="email" id="email">
+					</p>
+	
+					<p>
+						<label for="contrasenia"> Contraseña:</label>
+						<input type="password" name="contrasenia" id="contrasenia">
+						</p>
+	
+						<p>
+							<button class="button-orange" type="submit" value="Enviar"> Registrarme </button>
+						</p>
+		
+	
+				</form>
+			</div>
+		</div>	
+
+
+<%- include('./partials/footer') %>
+	
+</body>
+
+</html>
