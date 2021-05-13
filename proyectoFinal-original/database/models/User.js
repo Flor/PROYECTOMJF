@@ -1,10 +1,7 @@
-//const { DataTypes } = require('sequelize/types');
-
-//const sequelize = require()
 
 module.exports= (sequelize, DataTypes) => {
 
-    let alias = "Usuario";
+    let alias = "User";
 
     let cols = {
         id:{
@@ -49,8 +46,8 @@ module.exports= (sequelize, DataTypes) => {
 
 
 
-    const Usuario =  sequelize.define(alias, cols, config);
-    return Usuario;
+    const User =  sequelize.define(alias, cols, config);
+    return User;
 
 }
 

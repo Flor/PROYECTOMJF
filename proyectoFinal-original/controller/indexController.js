@@ -2,7 +2,6 @@ let buzos = require ("../data/data");
 const { json } = require ('express') 
 
 
-
 let indexController = { 
     index : function(req, res) {
         return res.render ('index', {buzos_buzos: buzos.lista})
@@ -28,7 +27,22 @@ let indexController = {
 
 
 
-
 module.exports = indexController;
 
     
+
+/*let indexController = {
+    index: function (req, res) {
+        db.Comentario.findAll()
+        .then((data) => {
+            return res.render('comentario/comentarioIndex', { 
+                comentarios: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+    },
+}*/
+/*NOSE Q HACER ACa*/
+

@@ -1,6 +1,6 @@
 module.exports= (sequelize, DataTypes) => {
 
-    let alias = "Comentario";
+    let alias = "Comment";
 
     let cols = {
         id:{
@@ -32,7 +32,7 @@ module.exports= (sequelize, DataTypes) => {
     }
 
 
-    const Comentario =  sequelize.define(alias, cols, config)
-    return Comentario;
+    const Comment =  sequelize.define(alias, cols, config)
+    return Comment;
 
 }

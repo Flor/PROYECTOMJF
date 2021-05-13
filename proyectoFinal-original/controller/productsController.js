@@ -1,6 +1,62 @@
-let buzos = require ("../data/data");
-let users = require ("../data/users")
+//let buzos = require ("../data/data");
+//let users = require ("../data/users")
+let db = require("../database/models");
 
+const op = db.Sequelize.Op;
+
+let productsController = {
+    product: function (req, res) {
+        db.Product.findAll()
+        .then((data) => {
+            return res.render('products/productsIndex', { 
+            products: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+},
+    productAdd: function (req, res) {
+        db.Product.findAll()
+        .then((data) => {
+            return res.render('products/productsIndex', { 
+            products: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+},
+   allProducts: function (req, res) {
+        db.Product.findAll()
+        .then((data) => {
+            return res.render('products/productsIndex', { 
+            products: data 
+        });
+    })
+    .catch((error) => {
+        return res.send(error);
+    })
+},
+    productEdit: function (req, res) {
+        db.Product.findAll()
+        .then((data) => {
+            return res.render('products/productsIndex', { 
+            products: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+    },
+}
+
+module.exports = productsController;
+    
+
+
+
+/*
 let productsController = {
     product : function(req, res) {
         let id = req.params.id 
@@ -23,6 +79,8 @@ let productsController = {
 
 
 }
+*/
+
 
 module.exports = productsController;
     

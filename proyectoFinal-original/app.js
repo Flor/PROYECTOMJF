@@ -8,6 +8,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
+var commentsRouter = require('./routes/comments');
+
 
 var app = express();
 
@@ -28,6 +30,10 @@ app.use('/', indexRouter);
 app.use('/product', productsRouter);
 
 app.use('/users', usersRouter);
+
+app.use('/comments', commentsRouter);
+
+
 
 
 

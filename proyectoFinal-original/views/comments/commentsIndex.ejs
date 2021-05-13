@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comment</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Actors (<%= actors.length %>) </h1>
+    <ul>
+      <% actors.forEach(actor => { %>
+        <li><%= actor.last_name.toUpperCase() %>, <%= actor.first_name %></li>
+       <% }) %>
+    </ul>
+  </body>
+</html>
+
+
+TENEMOS Q HACER LA LOGICA 
