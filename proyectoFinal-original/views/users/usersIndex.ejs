@@ -5,12 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Users (<%= users.length %>) </h1>
+    <p>Welcome <%= local.name %></p>
+    <a href="/logout">Logout</a>
+    
+    <!-- <h1>Users (<%= users.length %>) </h1>
     <ul>
       <% users.forEach(user => { %>
         <li><%= user.name %></li>
        <% }) %>
-    </ul>
+    </ul>  -->
   </body>
 </html>
 
