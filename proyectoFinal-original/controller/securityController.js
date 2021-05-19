@@ -9,7 +9,7 @@ let securityController = {
 
     authenticate: function(req, res) {
         
-        db.User.findAll(/*{where: {email: req.body.email} }*/)
+        db.User.findAll(/*{where: {email: req.body.email} (usemos username nosotros)}*/) 
         .then ((user) => {
            /*  if (req.body.password == user.password) {
                 req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
