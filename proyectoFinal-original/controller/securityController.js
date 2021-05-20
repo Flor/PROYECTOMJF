@@ -9,7 +9,7 @@ let securityController = {
 
     authenticate: function(req, res) {
         
-        db.User.findAll(/*{where: {email: req.body.email} (usemos username nosotros)}*/) 
+        db.User.findOne(/*{where: {email: req.body.email} (usemos username nosotros)}*/) 
         .then ((user) => {
            /*  if (req.body.password == user.password) {
                 req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
@@ -28,7 +28,7 @@ let securityController = {
         if(req.method == "POST") {
             db.User.create(req.body)
             .then (() => {
-                res.redirect("/")
+                return res.redirect("/")
             })
             .catch ((error) => {
                 return res.send(error)
@@ -38,7 +38,7 @@ let securityController = {
             return res.render("security/register");
         }
         },
-        /*register en un solo metodo es mejor porque */
+        /*register en un solo metodo es mejor porque le puedo pasar variables en comun, y puedo compartir funciones entre ellos, puedo hacer cosas en comun*/
 
     logout: function(req, res) {
             req.session.destroy();
