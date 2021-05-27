@@ -5,13 +5,14 @@ var cookieParser = require('cookie-parser');
 var session = require("express-session"); 
 var logger = require('morgan');
 
+const db = require('./database/models');
+
 //var indexOriginalRouter = require('./routes/index');
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
 var securityRouter = require("./routes/security");
-
 
 var app = express();
 
@@ -34,31 +35,40 @@ const publicRoutes = [
   "/login" , "/register"
 ]
 
+//lo que hace este middle es: si no hay sesion, pero hay cookie hace como si se loqueara el usuario.
+app.use(function(req, res, next){
+  if(req.cookies.userId != undefined && req.session.user == undefined){ //si esta seteada la userId, osea si existe  && no tiene ya una sesion de usuario =>  ejecutate y sino continua... next. El middle funciona asi, o ejecuta algo o continua.
+    console.log("database")
+    db.User.findByPK(req.cookies.userId)
+    .then( user => {
+      req.session.user = user;
+      return next ();
+    })
+    .catch(e => {next(createError(e.status)) })
+  } else {
+  
+  next(); /*con el next me aseguro que el codigo termina de ejecutar middle*/
+  }
+});
+
 app.use(function(req, res, next){
   if(req.session.user != undefined){
-    res.locals = req.session.user
+    res.locals.user = req.session.user
     next();
   } else {
     if (!publicRoutes.includes(req.path)) { /*si no le pongo esto seria un loop infinito*/
       return res.redirect("/login")
     }
   }
-  next(); /*con el next me aseguro que el codigo termina e ejecutar middle*/
+  next(); /*con el next me aseguro que el codigo termina de ejecutar middle*/
 });
 
 
 app.use('/', indexRouter);
-
 app.use('/product', productsRouter);
-
 app.use('/users', usersRouter);
-
 app.use('/comments', commentsRouter);
-
 app.use("/", securityRouter);
-
-
-
 
 
 // catch 404 and forward to error handler

@@ -1,4 +1,5 @@
 let db = require("../database/models");
+const bcrypt = require("bcryptjs");
 
 let securityController = {
     login: function(req, res) {
@@ -9,14 +10,17 @@ let securityController = {
 
     authenticate: function(req, res) {
         
-        db.User.findOne(/*{where: {email: req.body.email} (usemos username nosotros)}*/) 
+        db.User.findOne({where: {email: req.body.email} /*(usemos username nosotros)*/}) 
         .then ((user) => {
-           /*  if (req.body.password == user.password) {
+           if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
+                if (req.body.rememberme) {
+                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) //maxAge esta configurado en 1000 segundos
+                }
                 return res.redirect ("/");
-            } */
-            return res.send(user)
-            //res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
+            } 
+            //return res.send(user)
+            res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
         })
         .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
            console.log(error)
@@ -24,8 +28,12 @@ let securityController = {
         })
     },
 
+    /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */
+
     register: function(req, res) {
+
         if(req.method == "POST") {
+            req.body.password = bcrypt.hashSync(req.body.password)
             db.User.create(req.body)
             .then (() => {
                 return res.redirect("/")
@@ -42,6 +50,9 @@ let securityController = {
 
     logout: function(req, res) {
             req.session.destroy();
+            res.clearCookie("useerId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
+            
+
             return res.redirect("/");
         }
 
