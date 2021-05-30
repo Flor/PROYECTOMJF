@@ -37,7 +37,7 @@ const publicRoutes = [
 
 //lo que hace este middle es: si no hay sesion, pero hay cookie hace como si se loqueara el usuario.
 app.use(function(req, res, next){
-  if(req.cookies.userId != undefined && req.session.user == undefined){ //si esta seteada la userId, osea si existe  && no tiene ya una sesion de usuario =>  ejecutate y sino continua... next. El middle funciona asi, o ejecuta algo o continua.
+  if(req.cookies.userId != undefined && req.session.user == undefined){ //si esta seteada la userId, osea si existe  && no tiene ya una sesion de usuario =>  ejecutate, hace como si fuese un login y sino continua... next. El middle funciona asi, o ejecuta algo o continua.
     console.log("database")
     db.User.findByPK(req.cookies.userId)
     .then( user => {
