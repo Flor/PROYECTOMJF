@@ -34,9 +34,6 @@ module.exports= (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
 
-        username: {
-            type: DataTypes.STRING
-        }
     }
 
     let config = {

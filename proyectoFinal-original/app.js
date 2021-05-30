@@ -31,8 +31,8 @@ app.use(session(
   saveUnitialized: true}
 ));
 
-const publicRoutes = [
-  "/login" , "/register"
+const privateRoutes = [
+  "/profileEdit" , "/profile/:id", "/productAdd/:id" ,  '/productEdit/:id' /*agregar todas */
 ]
 
 //lo que hace este middle es: si no hay sesion, pero hay cookie hace como si se loqueara el usuario.
@@ -56,7 +56,7 @@ app.use(function(req, res, next){
     res.locals.user = req.session.user
     next();
   } else {
-    if (!publicRoutes.includes(req.path)) { /*si no le pongo esto seria un loop infinito*/
+    if (privateRoutes.includes(req.path)) { /*si no le pongo esto seria un loop infinito*/
       return res.redirect("/login")
     }
   }
