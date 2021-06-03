@@ -1,48 +1,26 @@
-let buzos = require ("../data/data");
 const { json } = require ('express') 
+const db = require('../database/models');
+const {op}= require('sequelize') //me permite usar operadores logicos
 
 
 let indexController = { 
     index : function(req, res) {
-        return res.render ('index', {buzos_buzos: buzos.lista})
+        db.Product.findAll()
+        .then((resultado)=>{return res.render ('index', {buzos_buzos: resultado})})   
+        .catch ((error)=>{
+            res.send(error)
+        })
     },
 
 
     search: function (req, res) {
-        let buzos_buzos= buzos.lista
-        let search = req.query.search
-        let result = [];
-
-        for (let i = 0; i < buzos_buzos.length; i++) {
-            if (buzos_buzos.includes(search)) {
-                result.push(element)
-            }
-        
-        }
-        res.render ("search", {search: search, result:result})
-        
+        db.Product.findAll({where:{marca:{[op.like]:'%' + req.query.search + '%'}}})
+        .then((resultado)=>{return res.render ('search', {result: resultado})})   
+        .catch ((error)=>{
+            res.send(error)
+        })
     }, 
    
 }
 
-
-
 module.exports = indexController;
-
-    
-
-/*let indexController = {
-    index: function (req, res) {
-        db.Comentario.findAll()
-        .then((data) => {
-            return res.render('comentario/comentarioIndex', { 
-                comentarios: data 
-            });
-        })
-        .catch((error) => {
-            return res.send(error);
-        })
-    },
-}*/
-/*NOSE Q HACER ACa*/
-

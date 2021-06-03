@@ -1,14 +1,11 @@
-//let buzos = require ("../data/data");
-//let users = require ("../data/users")
 let db = require("../database/models");
-
 const op = db.Sequelize.Op;
 
 let productsController = {
     product: function (req, res) {
-        db.Product.findAll()
+        db.Product.findByPk(req.params.id)
         .then((data) => {
-            return res.render('products/productsIndex', { 
+            return res.render('product', { 
             products: data 
             });
         })
@@ -17,20 +14,13 @@ let productsController = {
         })
 },
     productAdd: function (req, res) {
-        db.Product.findAll()
-        .then((data) => {
-            return res.render('products/productsIndex', { 
-            products: data 
-            });
-        })
-        .catch((error) => {
-            return res.send(error);
-        })
+            return res.render('productAdd')
+             //AGREGAR EL OTRO METODO DE AGREFAR A LA DATABASE
 },
    allProducts: function (req, res) {
         db.Product.findAll()
         .then((data) => {
-            return res.render('products/productsIndex', { 
+            return res.render('allProducts', { 
             products: data 
         });
     })
@@ -39,10 +29,10 @@ let productsController = {
     })
 },
     productEdit: function (req, res) {
-        db.Product.findAll()
+        db.Product.findByPk(req.params.id)
         .then((data) => {
-            return res.render('products/productsIndex', { 
-            products: data 
+            return res.render('productEdit', { 
+            product: data 
             });
         })
         .catch((error) => {

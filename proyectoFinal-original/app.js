@@ -11,7 +11,6 @@ const db = require('./database/models');
 var indexRouter = require('./routes/index');
 var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
-var commentsRouter = require('./routes/comments');
 var securityRouter = require("./routes/security");
 
 var app = express();
@@ -39,6 +38,7 @@ const privateRoutes = [
 app.use(function(req, res, next){
   if(req.cookies.userId != undefined && req.session.user == undefined){ //si esta seteada la userId, osea si existe  && no tiene ya una sesion de usuario =>  ejecutate, hace como si fuese un login y sino continua... next. El middle funciona asi, o ejecuta algo o continua.
     console.log("database")
+
     db.User.findByPK(req.cookies.userId)
     .then( user => {
       req.session.user = user;
@@ -67,7 +67,6 @@ app.use(function(req, res, next){
 app.use('/', indexRouter);
 app.use('/product', productsRouter);
 app.use('/users', usersRouter);
-app.use('/comments', commentsRouter);
 app.use("/", securityRouter);
 
 
