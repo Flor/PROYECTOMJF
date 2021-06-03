@@ -15,8 +15,18 @@ let productsController = {
 },
     productAdd: function (req, res) {
             return res.render('productAdd')
-             //AGREGAR EL OTRO METODO DE AGREFAR A LA DATABASE
+             
 },
+    store: function (req, res) {
+        db.Product.create(req.body)
+        .then(() => {
+            res.redirect('product')
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+},   
+
    allProducts: function (req, res) {
         db.Product.findAll()
         .then((data) => {
