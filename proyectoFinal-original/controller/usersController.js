@@ -18,8 +18,8 @@ let usersController = {
 
     profile: function (req, res, next) {
         db.User.findByPk(req.params.id)
-        .then(user) => {
-            db.Producto.findAll({
+        .then((user) => {
+            db.Product.findAll({
                 where: [
                     {id_usuario:req.params.id}
                 ]
@@ -30,7 +30,7 @@ let usersController = {
                     'imagen': imagen, 
                     'idUsuario': id_usuario,
                     'producto': producto,
-                })
+                });
             })
             .catch ((error) => {
                 return res.send (error);
