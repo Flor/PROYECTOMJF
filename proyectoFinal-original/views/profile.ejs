@@ -6,7 +6,11 @@
 
 <body>
 	
-<%- include('./partials/headerLogueado') %>
+	<% if (locals.usuarios.email) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
@@ -16,8 +20,8 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= users[idSearch].nombre %> 
-						<a href="/users/profileEdit"> 
+					<h1 class="main-title"> <%= User.nombre %> + <%= User.apellido %> 
+						<a href="../database/models/User.js"> 
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>

@@ -6,7 +6,11 @@
 
 <body>
 	
-<%- include('./partials/headerLogueado') %>
+	<% if (locals.usuarios.email) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -16,7 +20,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			
-				<form class="font-impact-white" action="/" method="GET">
+				<form class="formulario" action="/" method="GET">
 
 					<p>
 					<label for="nombre"> Nombre:</label>
@@ -44,14 +48,14 @@
 					</p>
 	
 					<p>
-						<label for="contrasenia"> Contraseña:</label>
-						<input type="password" name="contrasenia" id="contrasenia">
-						</p>
+					<label for="contrasenia"> Contraseña:</label>
+					<input type="password" name="contrasenia" id="contrasenia">
+					</p>
 	
-						<p>
-							<button class="button-orange" type="submit" value="Enviar"> Guardar cambios</button>
-						</p>
-	
+					<p>
+					<button class="button-orange" type="submit" value="Enviar"> Guardar cambios</button>
+					</p>
+
 				</form>
 			</div>
 		</div>

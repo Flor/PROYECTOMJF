@@ -6,13 +6,19 @@
 
 <body>
 	
-	<%- include('./partials/header') %>
+	<% if (locals.usuarios && locals.usuarios.email) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 	
+
 	<!-- Banner -->
 	<div class="banner">
 		<img src="/images/banner2.jpg" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
+
 
 	<!-- Nuevos ingresos -->
 	<div class="container products-wrapper">
@@ -20,8 +26,8 @@
 			<div class="col-12">
 				<h2 class="products-title">NUEVOS INGRESOS</h2>
 			</div>
+			
 			<!-- Show the "ultimos" products -->
-
 
 			<% for (let i = 0; i < 4; i++) { %> 
 				<div class="col-12 col-sm-6 col-lg-3"> 

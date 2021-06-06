@@ -5,13 +5,17 @@
 <%- include('./partials/head') %>
 
 <body>
-    <%- include('./partials/header') %>
+	<% if (locals.usuario.email) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 
     <!-- Nuevos ingresos -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">PRODUCTOS DISPONIBLES</h2>
+				<h2 class="products-title">TODOS LOS PRODUCTOS DISPONIBLES</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 

@@ -1,6 +1,6 @@
-//let buzos = require ("../data/data");
-//let users = require ("../data/users");
 let db = require("../database/models");
+const Product = require('../database/models/Product');
+const User = require('../database/models/User');
 
 
 let usersController = {
@@ -14,51 +14,45 @@ let usersController = {
         .catch((error) => {
             return res.send(error);
         })
-    },
+  },
 
-    profile : function(req, res) {
-        let idUsuario = req.params.id
-        return res.render ('profile', {buzos_buzos: buzos.lista, users: users.lista, idSearch: idUsuario})
+    profile: function (req, res, next) {
+        db.User.findByPk(req.params.id)
+        .then(user) => {
+            db.Producto.findAll({
+                where: [
+                    {id_usuario:req.params.id}
+                ]
+            })
+            .then((product) => {
+                return res.render ('profile',{
+                    'usuario' : usuario,
+                    'imagen': imagen, 
+                    'idUsuario': id_usuario,
+                    'producto': producto,
+                })
+            })
+            .catch ((error) => {
+                return res.send (error);
+            })
+        }
     },
-
-    profileEdit: function(req, res) {
-        //let id = req.params.id
-        return res.render ('profileEdit', {producto: buzos.lista, users: users.lista})
+    
+    
+    profileEdit: function (req, res) {
+        let id = req.params.id;
+            return res.render ('profileEdit')
     },
 
     register: function(req, res) {
-        return res.render ('register', {title: "Registrate"})
+        return res.render ('register')
     },
 
     login: function(req, res) {
-        return res.render ('login', {title: "Iniciar Sesion"})
+        return res.render ('login')
      },
 }
 
 module.exports = usersController;
 
-
-
-
-
-/*let usersController = {
-
-    profile : function(req, res) {
-        let idUsuario = req.params.id
-        return res.render ('profile', {buzos_buzos: buzos.lista, users: users.lista, idSearch: idUsuario})
-    },
-
-    profileEdit: function(req, res) {
-        //let id = req.params.id
-        return res.render ('profileEdit', {producto: buzos.lista, users: users.lista})
-    },
-
-    register: function(req, res) {
-        return res.render ('register', {title: "Registrate"})
-    },
-
-    login: function(req, res) {
-        return res.render ('login', {title: "Iniciar Sesion"})
-     },
-}*/
 

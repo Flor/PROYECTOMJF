@@ -6,7 +6,11 @@
 
 <body>
 	
-<%- include('./partials/header') %>
+	<% if (locals.usuarios.email) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 
 	<!-- product detail -->
 	<div class="container products-wrapper">

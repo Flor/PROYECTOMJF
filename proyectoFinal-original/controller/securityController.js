@@ -3,13 +3,11 @@ const bcrypt = require("bcryptjs");
 
 let securityController = {
     login: function(req, res) {
-        return res.render ("security/login", {failed: req.query.failed});
-        
+        return res.render ("security/login", {failed: req.query.failed}); 
     },
 
 
     authenticate: function(req, res) {
-        
         db.User.findOne({where: {email: req.body.email} /*(usemos username nosotros)*/}) 
         .then ((user) => {
            if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -19,7 +17,6 @@ let securityController = {
                 }
                 return res.redirect ("/");
             } 
-            //return res.send(user)
             res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
         })
         .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
@@ -31,7 +28,7 @@ let securityController = {
     /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */
 
     register: function(req, res) {
-
+        console.log(req.method)
         if(req.method == "POST") {
             req.body.password = bcrypt.hashSync(req.body.password)
             db.User.create(req.body)
@@ -51,8 +48,6 @@ let securityController = {
     logout: function(req, res) {
             req.session.destroy();
             res.clearCookie("useerId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
-            
-
             return res.redirect("/");
         }
 

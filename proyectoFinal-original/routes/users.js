@@ -9,11 +9,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/profile/:id', usersController.profile);
-
 router.get('/profileEdit', usersController.profileEdit);
-
 router.get('/register', usersController.register);
-
 router.get('/login',usersController.login);
 
 module.exports = router;
