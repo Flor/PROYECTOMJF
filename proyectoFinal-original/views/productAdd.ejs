@@ -16,15 +16,25 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Joaquin, complete los datos del nuevo producto que desea agregar </h2>
+				<h2 class="products-title">Porfavor complete los datos del nuevo producto que desea agregar </h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 		
 				<form class="formulario" enctype="multipart/form-data" method="POST" style= "color: white;">
 
 					<p>
-						<label for="nombre"> Nombre del producto: </label>
-						<input type="text" name="nombre_producto" id="nombre_producto">
+						<label for="marca"> Marca: </label>
+						<input type="text" name="marca" id="marca">
+					</p>
+
+					<p>
+						<label for="modelo"> Modelo: </label>
+						<input type="text" name="modelo" id="modelo">
+					</p>
+
+					<p>
+						<label for="talle"> Talle: </label>
+						<input type="text" name="talle" id="talle">
 					</p>
 
 
@@ -37,16 +47,15 @@
 						<label for= "nombre"> Fecha de publicacion (DD-MM-AAAA): </label>
 						<input type="date" name="fecha_publicacion" id="fecha_publicacion">
 					</p>
-					
-
 
 					<p>
 					<label for="foto_producto"> Agrega foto del producto: </label>
         			<input type="file" name="foto_producto" id="foto_producto">	
 					</p>
 
+					
 					<p>
-						<button type="submit" value= "enviar"> Agregar producto </button>
+						<button class="button-orange" type="submit" value="Enviar"> Agregar producto </button>
 					</p>
 	
 	

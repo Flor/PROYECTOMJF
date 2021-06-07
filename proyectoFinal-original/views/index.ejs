@@ -34,7 +34,7 @@
 				   <section class="product-box">
 					   <a href="/product/<%= buzos_buzos[i].id %>">
 						   <figure class="product-box_image">
-							   <img src="<%= buzos_buzos[i].imagen %>" alt=" ">
+							   <img src="<%= buzos_buzos[i].foto_producto %>" alt=" ">
 						   </figure>
 						   <article class="product-box_data">
 							   <h2> <%= buzos_buzos[i].marca + '' + buzos_buzos[i].modelo %> </h2>
@@ -78,7 +78,7 @@
 						<section class="product-box">
 							<a href="/product/<%= buzos_buzos[i].id %>">
 								<figure class="product-box_image">
-									<img src="<%= buzos_buzos[i].imagen %>" alt=" ">
+									<img src="<%= buzos_buzos[i].foto_producto %>" alt=" ">
 								</figure>
 								<article class="product-box_data">
 									<h2> <%= buzos_buzos[i].marca + ' ' + buzos_buzos[i].modelo %> </h2>
@@ -90,8 +90,8 @@
 											</h3>
 									</h3>
 									<div>
-									  <!--<p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
-									<p> <i class="fas fa-edit"></i>  </p>-->
+									  <p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
+									<p> <i class="fas fa-edit"></i>  </p>
 									
 									</div>
 																		
