@@ -5,8 +5,16 @@ const {op}= require('sequelize') //me permite usar operadores logicos
 
 let indexController = { 
     index : function(req, res) {
-        db.Product.findAll()
-        .then((resultado)=>{return res.render ('index', {buzos_buzos: resultado})})   
+        db.Product.findAll({
+            include: [
+                {
+                    association: 'comentarios'
+                }
+            ]
+        })
+        .then((resultado)=>{
+            return res.render ('index', 
+            {buzos_buzos: resultado})})   
         .catch ((error)=>{
             res.send(error)
         })

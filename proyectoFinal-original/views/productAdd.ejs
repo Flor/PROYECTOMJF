@@ -6,12 +6,11 @@
 
 <body>
 	
-	<% if (locals.usuarios.email) { %>
+	<% if (locals.usuarios && locals.usuarios.email) { %>
 		<%- include('./partials/headerLogueado') %>
 	<% } else { %>
 		<%- include('./partials/header') %>
 	<% } %>
-	
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -21,7 +20,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 		
-				<form class="formulario" action="/productAdd" method="POST">
+				<form class="formulario" action="/productAdd" enctype="multipart/form-data" method="POST">
 
 					<p>
 					<label for="nombre"> Nombre del producto: </label>
@@ -48,7 +47,11 @@
 						<label for= "nombre"> ID del publicador: </label>
 						<input type="number" name="id_usuario" id="id_usuario" value= <%= locals.id %> readonly>
 					</p>
-					
+
+					<p>
+					<label for="foto_producto"> Agrega foto del producto: </label>
+        			<input type="file" name="foto_producto" id="foto_producto">	
+					</p>
 
 					<p>
 						<button type="submit" value= "enviar"> Agregar producto </button>

@@ -20,8 +20,8 @@ let productsController = {
     store: function (req, res) {
         let newProduct = {
             //agregar igual q la columna de datos
-        title: req.body.title,
-        rating: req.body.rating,
+            title: req.body.title,
+            rating: req.body.rating,
         }
         db.Product.create(newMovie)
         .then(() => {

@@ -24,6 +24,7 @@ let usersController = {
                     {id_usuario:req.params.id}
                 ]
             })
+        })
             .then((product) => {
                 return res.render ('profile',{
                     'usuario' : usuario,
@@ -35,7 +36,6 @@ let usersController = {
             .catch ((error) => {
                 return res.send (error);
             })
-        }
     },
     
     
