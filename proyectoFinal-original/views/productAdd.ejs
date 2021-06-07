@@ -20,33 +20,25 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 		
-				<form class="formulario" action="/productAdd" enctype="multipart/form-data" method="POST">
+				<form class="formulario" enctype="multipart/form-data" method="POST" style= "color: white;">
 
 					<p>
-					<label for="nombre"> Nombre del producto: </label>
-					<input type="text" name="nombre_producto" id="nombre_producto">
+						<label for="nombre"> Nombre del producto: </label>
+						<input type="text" name="nombre_producto" id="nombre_producto">
 					</p>
 
-					<p>
-					<label for="imagen"> Imagen: </label>
-					<input type="url" name="url_imagen" id="url_imagen">
-					</p>
 
 					<p>
-					<label for="descripción"> Descripcion: </label>
-					<input type="text" name="descripción" id="descripción">
+						<label for="descripcion"> Descripcion: </label>
+						<input type="text" name="descripcion" id="descripcion">
 					</p>
 					
 					<p>
 						<label for= "nombre"> Fecha de publicacion (DD-MM-AAAA): </label>
-						<input type="text" name="fecha_publicacion" id="fecha_publicacion">
+						<input type="date" name="fecha_publicacion" id="fecha_publicacion">
 					</p>
 					
 
-					<p>
-						<label for= "nombre"> ID del publicador: </label>
-						<input type="number" name="id_usuario" id="id_usuario" value= <%= locals.id %> readonly>
-					</p>
 
 					<p>
 					<label for="foto_producto"> Agrega foto del producto: </label>

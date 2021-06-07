@@ -19,13 +19,17 @@ let productsController = {
 },
     store: function (req, res) {
         let newProduct = {
-            //agregar igual q la columna de datos
-            title: req.body.title,
-            rating: req.body.rating,
-        }
-        db.Product.create(newMovie)
+            foto_producto: req.file.filename,
+            marca: req.body.marca,
+            modelo:req.body.modelo,
+            talle:req.body.talle,
+            fecha_publicacion: req.body.fecha_publicacion,
+            descripcion: req.body.descripcion,
+            id_usuario: req.body.id_usuario,
+        };
+        db.Product.create(newProduct)
         .then(() => {
-            res.redirect('product')
+            res.redirect('/')
         })
         .catch((error) => {
             return res.send(error);

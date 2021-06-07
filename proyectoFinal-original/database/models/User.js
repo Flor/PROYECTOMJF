@@ -34,6 +34,11 @@ module.exports= (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
 
+        fotodeperfil: {
+            type: DataTypes.STRING
+        },
+
+
     }
 
     let config = {
