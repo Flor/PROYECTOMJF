@@ -18,7 +18,12 @@ let productsController = {
              
 },
     store: function (req, res) {
-        db.Product.create(req.body)
+        let newProduct = {
+            //agregar igual q la columna de datos
+        title: req.body.title,
+        rating: req.body.rating,
+        }
+        db.Product.create(newMovie)
         .then(() => {
             res.redirect('product')
         })
