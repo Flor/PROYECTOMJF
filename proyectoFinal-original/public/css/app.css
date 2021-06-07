@@ -170,6 +170,14 @@ hr {
 
 
 /*====== Products ======*/
+
+.imagen{
+  margin-top: auto;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;

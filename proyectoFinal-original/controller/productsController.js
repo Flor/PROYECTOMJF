@@ -19,7 +19,7 @@ let productsController = {
 },
     store: function (req, res) {
         let newProduct = {
-            foto_producto: req.file.filename,
+            foto_producto: '/images/' + req.file.filename,
             marca: req.body.marca,
             modelo:req.body.modelo,
             talle:req.body.talle,
