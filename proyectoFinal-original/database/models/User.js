@@ -38,12 +38,13 @@ module.exports= (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
 
+    
 
     }
 
     let config = {
         tableName: "usuarios",
-        timestamps: false,
+        
     }
 
 

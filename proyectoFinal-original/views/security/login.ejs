@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href=""> 
-</head>
+
+<!-- Include Head -->
+    <%- include('./partials/head') %>
+
 <body>
+	<%- include('./partials/header') %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Ingresar </h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+
     <h1>Login</h1>
 
     <form action=""  method="POST">
@@ -25,5 +32,8 @@
         <a href="/profile">Profile</a>
         <% } %> -->
     </form>
+
+    	<%- include('./partials/footer') %>
+
 </body>
 </html>

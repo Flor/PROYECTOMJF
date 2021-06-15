@@ -35,7 +35,11 @@ module.exports= (sequelize, DataTypes) => {
 
         id_usuario: {
             type: DataTypes.INTEGER
-        } 
+        },
+
+        cantidad_comentarios: {
+            type: DataTypes.DECIMAL
+        }
     }
 
     let config = {

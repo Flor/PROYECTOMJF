@@ -30,8 +30,12 @@ let securityController = {
     register: function(req, res) {
         console.log(req.method)
         if(req.method == "POST") {
-            req.body.password = bcrypt.hashSync(req.body.password)
-            db.User.create(req.body)
+            req.body.password = bcrypt.hashSync(req.body.password,10)
+            let newUser={
+                ...req.body,
+               fotodeperfil: req.file.filename
+            }
+            db.User.create(newUser)
             .then (() => {
                 return res.redirect("/")
             })

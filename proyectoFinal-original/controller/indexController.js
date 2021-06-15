@@ -10,11 +10,16 @@ let indexController = {
                 {
                     association: 'comentarios'
                 }
-            ]
+            ],
+           
         })
         .then((resultado)=>{
+            /*let masComentados= resultado.sort((a,b)=> {
+                if(a.cantidad_comentarios < b.cantidad_comentarios) {return 1}
+                else {return -1}
+            })*/
             return res.render ('index', 
-            {buzos_buzos: resultado})})   
+            {buzos_buzos: resultado, /*masComentados: masComentados*/})})   
         .catch ((error)=>{
             res.send(error)
         })
