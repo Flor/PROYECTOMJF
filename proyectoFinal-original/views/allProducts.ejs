@@ -5,7 +5,7 @@
 <%- include('./partials/head') %>
 
 <body>
-	<% if (locals.usuario.email) { %>
+	<% if (locals.usuarios && locals.usuarios.email) { %>
 		<%- include('./partials/headerLogueado') %>
 	<% } else { %>
 		<%- include('./partials/header') %>
