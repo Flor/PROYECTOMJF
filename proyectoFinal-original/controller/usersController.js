@@ -20,22 +20,23 @@ let usersController = {
         db.User.findByPk(req.params.id)
         .then((user) => {
             db.Product.findAll({
-                where: [
-                    {id_usuario:req.params.id}
-                ]
+                where: { id_usuario: user.id }
             })
-        })
-            .then((product) => {
-                return res.render ('profile',{
-                    'usuario' : usuario,
-                    'imagen': imagen, 
-                    'idUsuario': id_usuario,
-                    'producto': producto,
+            .then((products) => {
+                res.render ('profile',{
+                    'usuario' : user,
+                    'imagen': user.fotoPerfil, 
+                    'idUsuario': user.id,
+                    'productos': products,
                 });
             })
             .catch ((error) => {
-                return res.send (error);
+                return res.send(error);
             })
+        })
+        .catch ((error) => {
+            return res.send(error);
+        })
     },
     
     
