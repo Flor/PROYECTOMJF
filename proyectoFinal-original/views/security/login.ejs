@@ -2,14 +2,12 @@
 <html lang="en">
 
 <!-- Include Head -->
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
 
 <body>
-    <% if (locals.usuarios && locals.usuarios.email) { %>
-		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
+
+	<%- include('../partials/header') %>
+
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -21,7 +19,7 @@
 
     <h1>Login</h1>
 
-    <form action=""  method="POST">
+    <form  method="POST">
         <label for="email">Email:</label> <br>
         <input type="text" id="email" name="email"> <br>
         <label for="password">Password:</label> <br>
@@ -29,15 +27,15 @@
         <input type="checkbox" id="rememberme" name="rememberme">
         <label for="rememberme"> Remember me</label> <br><br>
         <input type="submit" value="submit">
-        <% if (locals.error) { %>
-            <span style="color: red;"> <%= locals.error %> </span>
+        <% if (failed) { %>
+            <span style="color: red;"> Hubo un error al ingresar </span>
         <% } %>
         <!-- <% if (locals.user) { %>
         <a href="/profile">Profile</a>
         <% } %> -->
     </form>
 
-    	<%- include('./partials/footer') %>
+    	<%- include('../partials/footer') %>
 
 </body>
 </html>

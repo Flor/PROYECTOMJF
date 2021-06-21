@@ -6,7 +6,7 @@
 
 <body>
 	
-	<% if (locals.usuarios && locals.usuarios.email) { %>
+	<% if (locals.user) { %>
 		<%- include('./partials/headerLogueado') %>
 	<% } else { %>
 		<%- include('./partials/header') %>
@@ -15,7 +15,8 @@
 
 	<!-- Banner -->
 	<div class="banner">
-		<img src="/images/banner2.jpg" alt="Banner de ofertas">
+		<img src="/images/banner2.jpg" alt="Banner de ofertas"> 
+		
 	</div>
 	<!-- /Banner -->
 
