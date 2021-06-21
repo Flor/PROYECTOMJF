@@ -20,6 +20,7 @@ let indexController = {
            
         })
         .then((resultado)=>{
+            db.Product.findAll({
             /*let masComentados= resultado.sort((a,b)=> {
                 if(a.cantidad_comentarios < b.cantidad_comentarios) {return 1}
                 else {return -1}
