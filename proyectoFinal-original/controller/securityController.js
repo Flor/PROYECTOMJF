@@ -44,7 +44,7 @@ let securityController = {
             })
         }
         if(req.method == "GET") {
-            return res.render("register");
+            return res.render("security/register");
         }
         },
         /*register en un solo metodo es mejor porque le puedo pasar variables en comun, y puedo compartir funciones entre ellos, puedo hacer cosas en comun*/
