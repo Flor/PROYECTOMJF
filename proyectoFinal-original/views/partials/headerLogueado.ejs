@@ -29,21 +29,19 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="/product/allProducts/:id">TODOS LOS PRODUCTOS    |</a></li>
-					<li><a href="/product/productAdd/:id">CARGAR NUEVO PRODUCTO</a></li>
+					<li><a href="/">TODOS LOS PRODUCTOS    |</a></li>
+					<li><a href="/product/add">CARGAR NUEVO PRODUCTO</a></li>
 				</ul>
 	
 				<ul class="right-navbar">
-					<li><a href="/">
-								<%= users.nombre  %>  <i class="fas fa-user"></i>
+					<li><a href="/users/profile/<%= user.id %>">
+								<%= user.nombre  %>  <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
-						<form action="/" method="GET">
-							<button class="logout" type="submit" style= color:white>
-								CERRAR SESIÓN <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form>
+						<a href="/logout" class="logout" style= color:white>
+							CERRAR SESIÓN <i class="fas fa-sign-in-alt"></i>
+						</a>
 					</li>
 					
 				

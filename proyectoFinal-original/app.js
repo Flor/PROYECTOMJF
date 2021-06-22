@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(
   {secret: "moviesdb",
   resave: false,
-  saveUnitialized: true}
+  saveUninitialized: true}
 ));
 
 const privateRoutes = [
@@ -36,29 +36,21 @@ const privateRoutes = [
 
 //lo que hace este middle es: si no hay sesion, pero hay cookie hace como si se loqueara el usuario.
 app.use(function(req, res, next){
-  if(req.cookies.userId != undefined && req.session.user == undefined){ //si esta seteada la userId, osea si existe  && no tiene ya una sesion de usuario =>  ejecutate, hace como si fuese un login y sino continua... next. El middle funciona asi, o ejecuta algo o continua.
-    console.log("database")
-
-    db.User.findByPK(req.cookies.userId)
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    db.User.findByPk(req.cookies.userId)
     .then( user => {
       req.session.user = user;
-      return next ();
+      return next();
     })
-    .catch(e => {next(createError(e.status)) })
+    .catch( e => { next(createError(e.status)) })
   } else {
-  
-  next(); /*con el next me aseguro que el codigo termina de ejecutar middle*/
+    next()
   }
-});
+})
 
 app.use(function(req, res, next){
   if(req.session.user != undefined){
     res.locals.user = req.session.user
-    next();
-  } else {
-    if (privateRoutes.includes(req.path)) { /*si no le pongo esto seria un loop infinito*/
-      return res.redirect("/login")
-    }
   }
   next(); /*con el next me aseguro que el codigo termina de ejecutar middle*/
 });
@@ -67,7 +59,7 @@ app.use(function(req, res, next){
 app.use('/', indexRouter);
 app.use('/product', productsRouter);
 app.use('/users', usersRouter);
-app.use("/", securityRouter);
+app.use('/', securityRouter);
 
 
 // catch 404 and forward to error handler

@@ -28,7 +28,6 @@ let securityController = {
     /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */
 
     register: function(req, res) {
-        console.log(req.method)
         if(req.method == "POST") {
             req.body.password = bcrypt.hashSync(req.body.password,10)
             let newUser={
@@ -50,10 +49,10 @@ let securityController = {
         /*register en un solo metodo es mejor porque le puedo pasar variables en comun, y puedo compartir funciones entre ellos, puedo hacer cosas en comun*/
 
     logout: function(req, res) {
-            req.session.destroy();
-            res.clearCookie("useerId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
-            return res.redirect("/");
-        }
+        req.session.destroy();
+        res.clearCookie("userId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
+        return res.redirect("/");
+    }
 
 }
 

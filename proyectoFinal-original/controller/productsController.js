@@ -25,7 +25,7 @@ let productsController = {
             talle:req.body.talle,
             fecha_publicacion: req.body.fecha_publicacion,
             descripcion: req.body.descripcion,
-            id_usuario: req.body.id_usuario,
+            id_usuario: req.session.user.id,
         };
         db.Product.create(newProduct)
         .then(() => {
