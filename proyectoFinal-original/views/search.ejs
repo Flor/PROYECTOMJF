@@ -7,7 +7,7 @@
 
 <body>
 	
-	<% if (locals.usuarios.email) { %>
+	<% if (locals.user) { %>
 		<%- include('./partials/headerLogueado') %>
 	<% } else { %>
 		<%- include('./partials/header') %>
@@ -16,7 +16,7 @@
 
 	<!-- Novedades -->
 <div class="container products-wrapper">
-<div class="row">
+<div class="row"> 
 	<div class="col-12">
 		<h2 class="products-title">Resultados de tu búsqueda</h2>
 	</div>
