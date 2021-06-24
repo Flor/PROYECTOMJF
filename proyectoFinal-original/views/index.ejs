@@ -41,11 +41,15 @@
 							   <h2> <%= buzos_buzos[i].marca + ' ' + buzos_buzos[i].modelo %> </h2>
 							   <h3> 
 								   Talles disponibles: <%= buzos_buzos[i].talle %>
-								   <h3>
+								<h3>
 								   El buzo se publico el: <%= buzos_buzos[i].fecha_publicacion %>
-
-									</h3>
+								</h3>
 							   </h3>
+							   <div>
+								<p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
+								<p> <i class="fas fa-edit"></i>  </p>
+							  
+							  </div>
 							   
 							   									
 						   </article>
@@ -92,7 +96,7 @@
 									</h3>
 									<div>
 									  <p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
-									<p> <i class="fas fa-edit"></i>  </p>
+									  <p> <i class="fas fa-edit"></i>  </p>
 									
 									</div>
 																		
