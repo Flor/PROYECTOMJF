@@ -6,7 +6,6 @@
 
 <body>
 	
-	<% if (locals.user) { %>
 		<%- include('./partials/headerLogueado') %>
 
 	<!-- Datos del usuario -->
@@ -27,8 +26,7 @@
 				<div>
 					<ul class="">
 						<li> Productos: <%= productos.length %> </li>
-						<li> Seguidores:  </li>
-						<li> Comentarios:  </li>
+						<li> Comentarios: <%= comentarios.length %> </li>
 					</ul>
 				</div>
 			</div>
