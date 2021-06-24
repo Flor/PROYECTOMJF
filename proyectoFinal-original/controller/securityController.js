@@ -36,9 +36,11 @@ let securityController = {
             }
             db.User.create(newUser)
             .then (() => {
+                req.flash('info', 'User registered succesful')
                 return res.redirect("/")
             })
             .catch ((error) => {
+                req.flash('danger', 'Something went wrong')
                 return res.send(error)
             })
         }
