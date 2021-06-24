@@ -3,10 +3,12 @@ const op = db.Sequelize.Op;
 
 let productsController = {
     product: function (req, res) {
-        db.Product.findByPk(req.params.id)
+        db.Product.findByPk(req.params.id, {
+            include: [{association: "comentarios"}]
+        })
         .then((data) => {
             return res.render('product', { 
-            products: data 
+            product: data 
             });
         })
         .catch((error) => {
@@ -37,7 +39,9 @@ let productsController = {
 },   
 
    allProducts: function (req, res) {
-        db.Product.findAll()
+        db.Product.findAll(
+            {include: [{association: "comentarios"}]
+        })
         .then((data) => {
             return res.render('allProducts', { 
             products: data 

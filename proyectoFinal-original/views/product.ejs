@@ -18,43 +18,43 @@
 		<div class="d-flex align-items-center">
 
 			<h2 class="products-title"> 
-				 Buzo <%= buzos_buzos[idSearch].marca + ' ' %> Modelo <%= buzos_buzos[idSearch].modelo %>  
+				 Buzo <%= product.marca + ' ' %> Modelo <%= product.modelo %>  
 			</h2> 
 			<!-- <p class="product-detail-description">
 				<a href="/product/productAdd"> Agregar nuevo producto </a>
 			</p> -->
 		</div>
 		<p class="product-detail-description">
-			<a href="/product/add/:id"> Agregar nuevo producto </a>
+			<a href="/product/add"> Agregar nuevo producto </a>
 		</p>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<a href="/product/productEdit/<%= buzos_buzos[idSearch].id %> ">
+					<a href="/product/productEdit/<%= product.id %> ">
 						<i class="fas fa-edit fa-4x"> </i> 
 					</a> 
 					<!--<img src="/images/<%=product.product_image %>" >-->
-					<img src="<%= buzos_buzos[idSearch].foto_producto%>" alt="" class="product-detail-img">
-					<p class="product-detail-description"> Descripción: <%= buzos_buzos[idSearch].descripcion %> </p>
+					<img src="<%= product.foto_producto%>" alt="" class="product-detail-img">
+					<p class="product-detail-description"> Descripción: <%= product.descripcion %> </p>
 				</article>
 
 				<div class="col-12 col-lg-4">
 				
 				<section class="comments">					
-					<% for (let i = 0; i < buzos_buzos[idSearch].comentarios.length; i++) { %> 
+					<% for (let i = 0; i < product.comentarios.length; i++) { %> 
 
 							<article>
 								
-								<a href="/users/profile/<%= buzos_buzos[idSearch].comentarios[i].idUsuario %> ">
-								<img src="<%=  buzos_buzos[idSearch].comentarios[i].imagen %> " alt="">
+								<a href="/users/profile/<%= product.comentarios[i].idUsuario %> ">
+								<img src="<%=  product.comentarios[i].imagen %> " alt="">
 								</a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile/<%= buzos_buzos[idSearch].comentarios[i].idUsuario %> "> 
-										<%= buzos_buzos[idSearch].comentarios[i].usuarioQueComento %>
+									<strong> <a href="/users/profile/<%= product.comentarios[i].idUsuario %> "> 
+										<%= product.comentarios[i].usuarioQueComento %>
 									</a> </strong>
 
-									<%= buzos_buzos[idSearch].comentarios[i].comentario %>
+									<%= product.comentarios[i].comentario %>
 									</p>
 								</div>
 							</article>
