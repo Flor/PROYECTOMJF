@@ -33,14 +33,23 @@ let indexController = {
         })
     },
 
-
     search: function (req, res) {
-        db.Product.findAll({where:{marca:{[op.like]:'%' + req.query.search + '%'}}})
+        let result = req.query.search;
+        res.render("search", {result:result, product:db.product})
+    }
+
+    /* search: function (req, res) {
+        db.Product.findAll({
+            where:[
+                {marca:{[op.like]:'%' + req.query.search + '%'}},
+                {modelo:{[op.like]:'%' + req.query.search + '%'}} 
+            ]
+            })
         .then((resultado)=>{return res.render ('search', {result: resultado})})   
         .catch ((error)=>{
             res.send(error)
         })
-    }, 
+    }, */ 
    
 }
 
