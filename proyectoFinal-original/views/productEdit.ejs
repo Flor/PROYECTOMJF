@@ -6,14 +6,15 @@
 
 <body>
 	
-	<% if (locals.user) { %>
+
 		<%- include('./partials/headerLogueado') %>
+		
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title"> <%= usuario.nombre %> complete los datos del nuevo producto que desea editar </h2>
+				<h2 class="products-title"> <%= user.nombre %> complete los datos del nuevo producto que desea editar </h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			
