@@ -1,6 +1,7 @@
 const { json } = require ('express') 
 const db = require('../database/models');
-const {op}= require('sequelize') //me permite usar operadores logicos
+const op = db.Sequelize.Op;
+
 
 
 let indexController = { 
@@ -33,23 +34,30 @@ let indexController = {
         })
     },
 
-    search: function (req, res) {
+   /*  search: function (req, res) {
         let result = req.query.search;
-        res.render("search", {result:result, product:db.product})
+        res.render("search", {result:result, product:})
     }
-
-    /* search: function (req, res) {
+ */
+     search: function (req, res) {
         db.Product.findAll({
-            where:[
-                {marca:{[op.like]:'%' + req.query.search + '%'}},
-                {modelo:{[op.like]:'%' + req.query.search + '%'}} 
+            where:{
+                [op.or]:[
+                    {marca:{[op.like]:'%' + req.query.search + '%'}},
+                    {modelo:{[op.like]:'%' + req.query.search + '%'}},
+                    {descripcion:{[op.like]:'%' + req.query.search + '%'}}  
+                ]
+               
+            },
+            include: [
+                {association: "usuario"}
             ]
             })
         .then((resultado)=>{return res.render ('search', {result: resultado})})   
         .catch ((error)=>{
             res.send(error)
         })
-    }, */ 
+    },  
    
 }
 
