@@ -42,7 +42,7 @@
 							   <h3> 
 								   Talles disponibles: <%= result[i].talle %>
 								<h3>
-								   El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + result[i].usuario.apellido %></a>
+								   El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre +" "+ result[i].usuario.apellido %></a>
 								</h3>
 							   </h3>
 							   <div>
@@ -90,9 +90,10 @@
 									<h3> 
 										Talles disponibles: <%= result[i].talle %>
 										<h3>
-										El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + result[i].usuario.apellido %></a>
+											El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + " " + result[i].usuario.apellido %></a>
 
-											</h3>
+										</h3>
+										
 									</h3>
 									<div>
 									  <p>Comentarios: <%=result[i].comentarios.length %>  </p> 
