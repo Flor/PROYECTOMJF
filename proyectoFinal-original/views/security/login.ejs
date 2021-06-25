@@ -5,8 +5,11 @@
     <%- include('../partials/head') %>
 
 <body>
-
-	<%- include('../partials/header') %>
+	<% if (locals.user) { %>
+		<%- include('../partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('../partials/header') %>
+	<% } %>
 
 
 	<div class="container products-wrapper">
@@ -36,9 +39,14 @@
 					<button class="button-orange" type="submit" value="Enviar"> Iniciar sesion </button>
 				</p>
 				 
-				<% if (locals.error) { %>
+				<!-- <% if (locals.error) { %>
 					<span style="color: red;"> <%= locals.error %> </span>
+				<% } %> -->
+
+				<% if (failed) { %>
+					<span style="color: red;"> <%= fraseerror %> </span>
 				<% } %>
+				
 				
 
 			</form>

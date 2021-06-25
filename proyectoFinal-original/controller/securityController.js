@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 let securityController = {
     login: function(req, res) {
-        return res.render ("security/login", {failed: req.query.failed}); 
+        return res.render ("security/login", {failed: req.query.failed, fraseerror: "Hubo un error al ingresar sus datos"}); 
     },
 
 
@@ -17,12 +17,15 @@ let securityController = {
                 }
                 return res.redirect ("/");
             } 
+            
             res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
+        
         })
         .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
            console.log(error)
             throw error
         })
+        
     },
 
     /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */

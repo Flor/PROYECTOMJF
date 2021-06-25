@@ -6,7 +6,10 @@
 
 <body>
 	
+	<% if (locals.user) { %>
 		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
@@ -25,14 +28,14 @@
 				</div>
 				<div>
 					<ul class="">
-						<li> Productos: <%= productos.length %> </li>
-						<li> Comentarios: <%= comentarios.length %> </li>
+						<li> Productos: <%= product.length %> </li>
+						<li> Comentarios: <%= comment.length %> </li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /Datos del usuario -->
+
 
 	<!-- Mis productos -->
 	<div class="container products-wrapper">

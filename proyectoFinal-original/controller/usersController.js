@@ -22,7 +22,13 @@ let usersController = {
         db.User.findByPk(req.params.id)
         .then((user) => {
             db.Product.findAll({
-                where: { id_usuario: user.id }
+                where: { id_usuario: user.id },
+                
+                include: [
+                    {association: "Comment"},
+                    {association: "Product"}
+                ]
+    
             })
             .then((products) => {
                 res.render ('profile',{
@@ -30,6 +36,7 @@ let usersController = {
                     'imagen': user.fotoPerfil, 
                     'idUsuario': user.id,
                     'productos': products,
+                    "comentarios": comentarios,
                 });
             })
             .catch ((error) => {

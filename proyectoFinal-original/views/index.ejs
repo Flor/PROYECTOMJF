@@ -33,20 +33,20 @@
 			<% for (let i = 0; i < 4; i++) { %> 
 				<div class="col-12 col-sm-6 col-lg-3"> 
 				   <section class="product-box">
-					   <a href="/product/<%= buzos_buzos[i].id %>">
+					   <a href="/product/<%= result[i].id %>">
 						   <figure class="product-box_image">
-							   <img src="<%= buzos_buzos[i].foto_producto %>" alt=" ">
+							   <img src="<%= result[i].foto_producto %>" alt=" ">
 						   </figure>
 						   <article class="product-box_data">
-							   <h2> <%= buzos_buzos[i].marca + ' ' + buzos_buzos[i].modelo %> </h2>
+							   <h2> <%= result[i].marca + ' ' + result[i].modelo %> </h2>
 							   <h3> 
-								   Talles disponibles: <%= buzos_buzos[i].talle %>
+								   Talles disponibles: <%= result[i].talle %>
 								<h3>
-								   El buzo se publico el: <%= buzos_buzos[i].fecha_publicacion %>
+								   El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + result[i].usuario.apellido %></a>
 								</h3>
 							   </h3>
 							   <div>
-								<p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
+								<p>Comentarios: <%=result[i].comentarios.length %>  </p> 
 								<p> <i class="fas fa-edit"></i>  </p>
 							  
 							  </div>
@@ -77,25 +77,25 @@
 			
 			<% for (let i = 0; i < 8; i++) { %> 
 
-				<% if (buzos_buzos[i].comentarios.length > 1) { %> 
+				<% if (result[i].comentarios.length > 1) { %> 
 
 						<div class="col-12 col-sm-6 col-lg-3"> 
 						<section class="product-box">
-							<a href="/product/<%= buzos_buzos[i].id %>">
+							<a href="/product/<%= result[i].id %>">
 								<figure class="product-box_image">
-									<img src="<%= buzos_buzos[i].foto_producto %>" alt=" ">
+									<img src="<%= result[i].foto_producto %>" alt=" ">
 								</figure>
 								<article class="product-box_data">
-									<h2> <%= buzos_buzos[i].marca + ' ' + buzos_buzos[i].modelo %> </h2>
+									<h2> <%= result[i].marca + ' ' + result[i].modelo %> </h2>
 									<h3> 
-										Talles disponibles: <%= buzos_buzos[i].talle %>
+										Talles disponibles: <%= result[i].talle %>
 										<h3>
-										El buzo se publico el: <%= buzos_buzos[i].fecha_publicacion %>
+										El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + result[i].usuario.apellido %></a>
 
 											</h3>
 									</h3>
 									<div>
-									  <p>Comentarios: <%=buzos_buzos[i].comentarios.length %>  </p> 
+									  <p>Comentarios: <%=result[i].comentarios.length %>  </p> 
 									  <p> <i class="fas fa-edit"></i>  </p>
 									
 									</div>

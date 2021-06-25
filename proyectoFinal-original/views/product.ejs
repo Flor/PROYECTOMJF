@@ -12,52 +12,60 @@
 		<%- include('./partials/header') %>
 	<% } %>
 
-	<!-- product detail -->
+
 	<div class="container products-wrapper">
 		
 		<div class="d-flex align-items-center">
 
 			<h2 class="products-title"> 
-				 Buzo <%= product.marca + ' ' %> Modelo <%= product.modelo %>  
+				 Buzo <%= result.marca + ' ' %> Modelo <%= result.modelo %>  
 			</h2> 
-			<!-- <p class="product-detail-description">
-				<a href="/product/productAdd"> Agregar nuevo producto </a>
-			</p> -->
+			<h4>
+				<a class="link" href="/users/profile/<%=result.user.id">Creado por: <%= result.user.nombre %></a>
+			</h4>
+			
 		</div>
+
+		<% if (locals.user) { %>
 		<p class="product-detail-description">
 			<a href="/product/add"> Agregar nuevo producto </a>
 		</p>
+		<% } %>
+
+		<!-- solo si el usuario esta logueado y es el creador de este producto puede editarlo -->
 		<p class="product-detail-description">
-			<a href="/product/edit/<%= product.id %>"> Editar producto </a>
+			<a href="/product/edit/<%= result.id %>"> Editar producto </a>
 		</p>
+		
+
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<a href="/product/productEdit/<%= product.id %> ">
+					<a href="/product/productEdit/<%= result.id %> ">
 						<i class="fas fa-edit fa-4x"> </i> 
 					</a> 
 					<!--<img src="/images/<%=product.product_image %>" >-->
-					<img src="<%= product.foto_producto%>" alt="" class="product-detail-img">
-					<p class="product-detail-description"> Descripción: <%= product.descripcion %> </p>
+					<img src="<%= result.foto_producto%>" alt="" class="product-detail-img">
+					<p class="product-detail-description"> Descripción: <%= result.descripcion %> </p>
 				</article>
 
 				<div class="col-12 col-lg-4">
 				
 				<section class="comments">					
-					<% for (let i = 0; i < product.comentarios.length; i++) { %> 
+					<% for (let i = 0; i < result.comment.length; i++) { %> 
 
 							<article>
 								
-								<a href="/users/profile/<%= product.comentarios[i].idUsuario %> ">
-								<img src="<%=  product.comentarios[i].imagen %> " alt="">
+								<a href="/users/profile/<%= result.comment[i].id_Usuario %> ">
+									<img src="<%=  result.comment[i].user.fotodeperfil %> " alt="">
 								</a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile/<%= product.comentarios[i].idUsuario %> "> 
-										<%= product.comentarios[i].usuarioQueComento %>
+									<strong> <a href="/users/profile/<%= result.comment[i].id_Usuario %> "> 
+										<%= result.comment[i].user.nombre %>
 									</a> </strong>
 
-									<%= product.comentarios[i].comentario %>
+									<%= result.comment[i].comentario %>
 									</p>
 								</div>
 							</article>

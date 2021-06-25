@@ -10,7 +10,11 @@ let indexController = {
             include: [
                 {
                     association: 'comentarios'
+                },
+               {
+                   association: "usuario"
                 }
+              
 
             ],
             order:[
@@ -28,17 +32,13 @@ let indexController = {
             })*/
             
             return res.render ('index', 
-            {buzos_buzos: resultado, /*masComentados: masComentados*/})})   
+            {result: resultado, /*masComentados: masComentados*/})})   
         .catch ((error)=>{
             res.send(error)
         })
     },
 
-   /*  search: function (req, res) {
-        let result = req.query.search;
-        res.render("search", {result:result, product:})
-    }
- */
+   
      search: function (req, res) {
         db.Product.findAll({
             where:{

@@ -547,6 +547,11 @@ color: white;
   color: white;
 }
 
+.link {
+  color: orangered;
+  text-decoration: underline;
+}
+
 
 
 /*====== Media-Queries ======*/
