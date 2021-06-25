@@ -5,7 +5,9 @@ const User = require('../database/models/User');
 
 let usersController = {
     index: function (req, res) {
-        db.User.findAll()
+        db.User.findAll({
+            include: [{association: "comentarios"}]
+        })
         .then((data) => {
             return res.render('users/usersIndex', { 
                 users: data 
