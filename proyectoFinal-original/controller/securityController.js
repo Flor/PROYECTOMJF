@@ -10,6 +10,10 @@ let securityController = {
     authenticate: function(req, res) {
         db.User.findOne({where: {email: req.body.email} /*(usemos username nosotros)*/}) 
         .then ((user) => {
+        if (user) {
+            let condicion = bcrypt.compareSync(req.body.password, user.password)
+            console.log(condicion)
+            console.log(req.body.password)
            if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
                 if (req.body.rememberme) {
@@ -17,7 +21,7 @@ let securityController = {
                 }
                 return res.redirect ("/");
             } 
-            
+        }
             res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
         
         })
@@ -39,11 +43,11 @@ let securityController = {
             }
             db.User.create(newUser)
             .then (() => {
-                req.flash('info', 'User registered succesful')
-                return res.redirect("/")
+                // req.flash('info', 'User registered succesful')
+                return res.redirect("/login")
             })
             .catch ((error) => {
-                req.flash('danger', 'Something went wrong')
+                // req.flash('danger', 'Something went wrong')
                 return res.send(error)
             })
         }

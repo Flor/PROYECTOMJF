@@ -10,16 +10,17 @@
 		<%- include('./partials/headerLogueado') %>
 	<% } else { %>
 		<%- include('./partials/header') %>
+	<% } %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= usuario.fotodeperfil %> " alt="foto de perfil" class="foto-perfil">
+				<img src="/images/<%= usuario.fotodeperfil %> " alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= usuario.nombre %> + <%= usuario.apellido %> 
+					<h1 class="main-title"> <%= usuario.nombre %>  <%= usuario.apellido %> 
 						<a href="/users/profileEdit"> 
 							<i class="fas fa-cog"></i>
 						</a>
@@ -28,8 +29,8 @@
 				</div>
 				<div>
 					<ul class="">
-						<li> Productos: <%= product.length %> </li>
-						<li> Comentarios: <%= comment.length %> </li>
+						<li> Productos: <%= usuario.producto.length %> </li>
+						<li> Comentarios: <%= usuario.comentario.length %> </li>
 					</ul>
 				</div>
 			</div>
@@ -43,7 +44,7 @@
 			<div class="col-12">
 				<h2 class="products-title">Mis productos</h2>
 			</div>
-			<% for(product of productos) { %>
+			<% for(product of usuario.producto) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
 						<a href="/product/<%= product.id %> ">

@@ -19,29 +19,23 @@ let usersController = {
   },
 
     profile: function (req, res, next) {
-        db.User.findByPk(req.params.id)
+        db.User.findByPk(req.params.id, {
+            include: [
+                {association: "comentario"},
+                {association: "producto"}
+            ]
+        })
         .then((user) => {
-            db.Product.findAll({
-                where: { id_usuario: user.id },
-                
-                include: [
-                    {association: "Comment"},
-                    {association: "Product"}
-                ]
-    
-            })
-            .then((products) => {
-                res.render ('profile',{
+            console.log(user.comentario)
+            console.log(user.producto)
+
+            return res.render ('profile',{
                     'usuario' : user,
                     'imagen': user.fotoPerfil, 
                     'idUsuario': user.id,
-                    'productos': products,
-                    "comentarios": comentarios,
+                    
                 });
-            })
-            .catch ((error) => {
-                return res.send(error);
-            })
+           
         })
         .catch ((error) => {
             return res.send(error);

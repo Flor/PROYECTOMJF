@@ -21,7 +21,7 @@
 				 Buzo <%= result.marca + ' ' %> Modelo <%= result.modelo %>  
 			</h2> 
 			<h4>
-				<a class="link" href="/users/profile/<%=result.user.id">Creado por: <%= result.user.nombre %></a>
+				<a class="link" href="/users/profile/<&=result.usuario.id%>">Creado por: <%= result.usuario.nombre %></a>
 			</h4>
 			
 		</div>
@@ -44,7 +44,7 @@
 					<a href="/product/productEdit/<%= result.id %> ">
 						<i class="fas fa-edit fa-4x"> </i> 
 					</a> 
-					<!--<img src="/images/<%=product.product_image %>" >-->
+				
 					<img src="<%= result.foto_producto%>" alt="" class="product-detail-img">
 					<p class="product-detail-description"> Descripción: <%= result.descripcion %> </p>
 				</article>
@@ -52,20 +52,20 @@
 				<div class="col-12 col-lg-4">
 				
 				<section class="comments">					
-					<% for (let i = 0; i < result.comment.length; i++) { %> 
+					<% for (let i = 0; i < result.comentarios.length; i++) { %> 
 
 							<article>
 								
-								<a href="/users/profile/<%= result.comment[i].id_Usuario %> ">
-									<img src="<%=  result.comment[i].user.fotodeperfil %> " alt="">
+								<a href="/users/profile/<%= result.comentarios[i].id_Usuario %> ">
+									<img src="/images/<%=  result.comentarios[i].usuarios.fotodeperfil %> " alt="">
 								</a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile/<%= result.comment[i].id_Usuario %> "> 
-										<%= result.comment[i].user.nombre %>
+									<strong> <a href="/users/profile/<%= result.comentarios[i].id_Usuario %> "> 
+										<%= result.comentarios[i].usuarios.nombre %>
 									</a> </strong>
 
-									<%= result.comment[i].comentario %>
+									<%= result.comentarios[i].comentario %>
 									</p>
 								</div>
 							</article>

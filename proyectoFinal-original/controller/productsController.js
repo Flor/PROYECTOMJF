@@ -3,10 +3,12 @@ const op = db.Sequelize.Op;
 
 let productsController = {
     product: function (req, res) {
-        db.Product.findByPk(req.params.id, {
-            include: [{association: "comment"}, {association: "user"} ]
-        })
+        db.Product.findByPk(req.params.id , {
+            include: [{association: "comentarios", include: [{association: "usuarios"}] }, {association: "usuario"} ]
+        } )
         .then((resultado) => {
+            console.log(resultado.comentarios[0]);
+        
             return res.render('product', { 
             result: resultado 
             });
