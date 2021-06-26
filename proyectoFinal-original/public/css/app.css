@@ -185,7 +185,7 @@ hr {
 
 .products-title {
   font-size: 2.4em;
-  font-weight: 400;
+  
   color: white;
 }
 
@@ -550,6 +550,11 @@ color: white;
 .link {
   color: orangered;
   text-decoration: underline;
+
+}
+
+.fontsize {
+  font-size: 1.8em;
 }
 
 
