@@ -70,6 +70,25 @@ let productsController = {
         req.body.id_usuario = req.session.user.id
         req.body.id_producto = req.params.id
 
+        db.Comment.create(req.body, {
+            order:[
+                [
+                    "fecha" , "DESC"
+                ]
+            ],
+        }) 
+       
+        .then((data) => {
+            return res.redirect(req.get("Referrer"));
+        })
+
+        .catch((error) => {
+            return res.send(error);
+        })
+    },
+
+   /*  delete: function (req, res) 
+
         db.Comment.create(req.body)
         .then((data) => {
             return res.redirect(req.get("Referrer"));
@@ -77,7 +96,7 @@ let productsController = {
         .catch((error) => {
             return res.send(error);
         })
-    },
+    }, */
 }
 
 module.exports = productsController;
