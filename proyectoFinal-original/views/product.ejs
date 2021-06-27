@@ -80,12 +80,16 @@
 				<% } %>
 
 					</section>
+
+					<% if (locals.user) { %>
+						<form class="form" action="/product/<%=result.id%>/comment " method="POST">
+							<input class="form-input" type="text" name="comentario" id="comentario" value="" placeholder="Escribe aqui tu comentario">
+							<button type="submit" class="buy-now-button"> AGREGAR COMENTARIO</button> 
+						</form>
+					<% } else { %>
+						<a href="/login"><button class="button-orange"> Inicia sesión para comentar!</button></a>
+					<% } %>
 					
-if (si esta logueado)
-					<form class="form" action="/product/<%=result.id%>/comment " method="POST">
-						<input class="form-input" type="text" name="comentario" id="comentario" value="" placeholder="Escribe aqui tu comentario">
-						<button type="submit" class="buy-now-button"> AGREGAR COMENTARIO</button> 
-					</form>
 
 					<hr>
 				</div>
