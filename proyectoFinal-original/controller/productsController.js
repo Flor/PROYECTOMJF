@@ -64,6 +64,20 @@ let productsController = {
             return res.send(error);
         })
     },
+
+
+    comment: function (req, res) {
+        req.body.id_usuario = req.session.user.id
+        req.body.id_producto = req.params.id
+
+        db.Comment.create(req.body)
+        .then((data) => {
+            return res.redirect(req.get("Referrer"));
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+    },
 }
 
 module.exports = productsController;
@@ -72,5 +86,5 @@ module.exports = productsController;
 
 
 
-module.exports = productsController;
+
     

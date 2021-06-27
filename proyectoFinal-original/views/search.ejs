@@ -14,11 +14,12 @@
 	<% } %>
 
 
-
-<div> 
-	<div>
+	<div class="whitefont">
 		<h2>Resultados de tu búsqueda</h2>
 	</div>
+	
+<div class="row"> 
+	
 
 
 		<% for(let i=0; i < result.length; i++) { %>
@@ -43,8 +44,6 @@
 						</a>
 					</div>
 					<div>
-				
-						
 						<article class="product-box_data">
 							<h4> Creado por: <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%= result[i].usuario.nombre + " " + result[i].usuario.apellido %> </a></h4>
 						</article>

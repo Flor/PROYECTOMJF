@@ -80,9 +80,10 @@
 				<% } %>
 
 					</section>
-
-					<form class="form" action="/" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Escribe aqui tu comentario">
+					
+if (si esta logueado)
+					<form class="form" action="/product/<%=result.id%>/comment " method="POST">
+						<input class="form-input" type="text" name="comentario" id="comentario" value="" placeholder="Escribe aqui tu comentario">
 						<button type="submit" class="buy-now-button"> AGREGAR COMENTARIO</button> 
 					</form>
 

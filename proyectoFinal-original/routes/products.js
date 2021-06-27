@@ -22,6 +22,7 @@ router.post('/add/',upload.single('foto_producto'), productsController.store);
 router.get ("/", productsController.allProducts);
 router.get ("/edit/:id", productsController.productEdit);
 router.get('/:id', productsController.product);
+router.post('/:id/comment', productsController.comment);
 
 module.exports = router;
 
