@@ -39,10 +39,16 @@
 		</p>
 		<% } %>
 
+		<% if (locals.user == result.usuario.id) { %>
 		<!-- solo si el usuario esta logueado y es el creador de este producto puede editarlo -->
 		<p class="product-detail-description">
 			<a href="/product/edit/<%= result.id %>"> Editar producto </a>
 		</p>
+
+		<p class="product-detail-description">
+			<a href="/product/edit/<%= result.id %>"> Eliminar producto </a>
+		</p>
+		<% } %>
 		
 
 		<div class="product-detail">
