@@ -1,6 +1,21 @@
 let db = require("../database/models");
 const bcrypt = require("bcryptjs");
 
+/* let securityController = {
+    login: async function(req, res, next) {
+        let user = await db.User.findOne({where: {username: req.body.username} });
+        if (user && bcrypt.compareSync (req.body.password, user.password)) {
+       
+        if(req.body.rememberme) {
+           res.cookie('user',userId)
+           }
+            req.flash('info', 'welcome!');
+            req.session.user = user;
+           
+           } else { req.flash ('danger', 'usuario no registrado');
+    };
+ */
+
 let securityController = {
     login: function(req, res) {
         return res.render ("security/login", {failed: req.query.failed, fraseerror: "Hubo un error al ingresar sus datos"}); 
@@ -49,12 +64,13 @@ let securityController = {
             }
             db.User.create(newUser)
             .then (() => {
-                // req.flash('info', 'User registered succesful')
-                return res.redirect("/login")
+
+                // req.flash('info', 'User registered succesful');
+                res.redirect("/login");
             })
             .catch ((error) => {
                 // req.flash('danger', 'Something went wrong')
-                return /* res.send(error) */ req.flash('danger', 'algo salio mal')
+                return res.send(error); /* req.flash('danger', 'algo salio mal'); */
             })
         }
         if(req.method == "GET") {

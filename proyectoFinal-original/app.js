@@ -83,5 +83,16 @@ app.use(function(err, req, res, next) {
 const {flash} = require('express-flash-message')
 app.use (flash({sessionKetName: 'miSession'}))
 
+app.use (async function (req, res, next){
+res.locals.flash = {
+  success: await req.consumeFlash('success'),
+  info: await req.consumeFlash('info'),
+  danger: await req.consumeFlash('danger'),
+  warning: await req.consumeFlash('warning'),
+}
+next ();
+
+});
+
 
 module.exports = app;
