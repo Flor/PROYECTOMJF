@@ -69,12 +69,12 @@
 
 							<article>
 								
-								<a href="/users/profile/<%= result.comentarios[i].usuarios.id_Usuario %> ">
+								<a href="/users/profile/:id <%= result.comentarios[i].usuarios.id_Usuario %> ">
 									<img src="/images/<%=  result.comentarios[i].usuarios.fotodeperfil %> " alt="">
 								</a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile/<%= result.comentarios[i].usuarios.id_Usuario %> "> 
+									<strong> <a href="/users/profile/:id <%= result.comentarios[i].usuarios.id_Usuario %> "> 
 										<%= result.comentarios[i].usuarios.nombre %>
 									</a> </strong>
 
