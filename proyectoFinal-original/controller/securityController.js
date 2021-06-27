@@ -20,7 +20,13 @@ let securityController = {
                     res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) //maxAge esta configurado en 1000 segundos
                 }
                 return res.redirect ("/");
-            } 
+
+            } else {
+
+                return req.flash('danger', 'algo salio mal');
+
+                }
+                
         }
             res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
         
@@ -48,7 +54,7 @@ let securityController = {
             })
             .catch ((error) => {
                 // req.flash('danger', 'Something went wrong')
-                return res.send(error)
+                return /* res.send(error) */ req.flash('danger', 'algo salio mal')
             })
         }
         if(req.method == "GET") {

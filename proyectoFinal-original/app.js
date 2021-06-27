@@ -78,4 +78,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// flash
+
+const {flash} = require('express-flash-message')
+app.use (flash({sessionKetName: 'miSession'}))
+
+
 module.exports = app;
