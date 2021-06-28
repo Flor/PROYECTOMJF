@@ -30,7 +30,7 @@ let securityController = {
             console.log(condicion)
             console.log(req.body.password)
            if (bcrypt.compareSync(req.body.password, user.password)) {
-                req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
+                req.session.user = user; 
                 if (req.body.rememberme) {
                     res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) //maxAge esta configurado en 1000 segundos
                 }
