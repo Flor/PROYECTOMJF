@@ -27,7 +27,7 @@
 		</div>
 		<div>
 			<p class="fontsize whitefont">
-				Creado por : <a class="link" href="/users/profile/<&=result.usuario.id%>"><%= result.usuario.nombre %>    <%= result.usuario.apellido %></a>
+				Creado por : <a class="link" href="/users/profile/<%=result.usuario.id%>"><%= result.usuario.nombre %>    <%= result.usuario.apellido %></a>
 			</p>
 		</div>
 			
@@ -40,25 +40,23 @@
 		<% } %>
 
 
-		<% if (locals.user) { %>
-		<!-- solo si el usuario esta logueado y es el creador de este producto puede editarlo -->
-		<p class="product-detail-description">
-			<a href="/product/edit/<%= result.id %>"> Editar producto </a>
-		</p>
+		<% if (locals.user && locals.user.id == result.id_usuario) { %>
+	
+			<p class="product-detail-description">
+			
+				<a href="/product/edit/<%= result.id %>"> Editar producto </a>
+			</p>
 
-
-		<p class="product-detail-description">
-			<a href="/product/edit/<%= result.id %>"> Eliminar producto </a>
-		</p>
+			<p class="product-detail-description">
+				<a href="/users/profile/<%= result.id %>"> Eliminar producto </a>
+			</p>
 		<% } %>
 		
 
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<!-- <a href="/product/productEdit/<%= result.id %> ">
-						<i class="fas fa-edit fa-4x"> </i> 
-					</a>  -->
+					
 				
 					<img src="<%= result.foto_producto%>" alt="" class="product-detail-img">
 					<p class="product-detail-description"> Descripción: <%= result.descripcion %> </p>
@@ -71,12 +69,12 @@
 
 							<article>
 								
-								<a href="/users/profile/ <%= result.comentarios[i].usuarios.id_Usuario %> ">
+								<a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> ">
 									<img src="/images/<%=  result.comentarios[i].usuarios.fotodeperfil %> " alt="">
 								</a>
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile/ <%= result.comentarios[i].usuarios.id_Usuario %> "> 
+									<strong> <a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> "> 
 										<%= result.comentarios[i].usuarios.nombre %>
 									</a> </strong>
 

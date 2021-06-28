@@ -7,18 +7,18 @@
 <body>
 	
 
-		<%- include('./partials/headerLogueado') %>
+	<%- include('./partials/headerLogueado') %>
 		
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title"> <%= user.nombre %> complete los datos del nuevo producto que desea editar </h2>
+				<h2 class="products-title"> <%= user.nombre %> complete los datos del producto que desea editar </h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 			
-				<form class="font-impact-white" action="/profile" method="GET">
+			
+				<form class="font-impact-white" action="/profile" method="POST" enctype="multipart/form-data">
 
 					<p>
 					<label for="nombre"> Nombre del producto: </label>
@@ -36,7 +36,7 @@
 					</p>
 
 					<p>
-						<a href="/" class="button-orange" type="submit" > EDITAR PRODUCTO </a>
+						<button class="button-orange" type="submit" value="Enviar"> ACTUALIZAR PRODUCTO </button>
 					</p>
 	
 	
