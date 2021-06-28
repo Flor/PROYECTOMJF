@@ -23,37 +23,35 @@ let securityController = {
 
 
     authenticate: function(req, res) {
-        db.User.findOne({where: {email: req.body.email} /*(usemos username nosotros)*/}) 
+        db.User.findOne({where: {email: req.body.email} }) 
         .then ((user) => {
         if (user) {
             let condicion = bcrypt.compareSync(req.body.password, user.password)
             console.log(condicion)
             console.log(req.body.password)
            if (bcrypt.compareSync(req.body.password, user.password)) {
-                req.session.user = user; // estoy guardando todos los datos del usuario en la sesion
+                req.session.user = user; 
                 if (req.body.rememberme) {
-                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) //maxAge esta configurado en 1000 segundos
+                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) 
                 }
                 return res.redirect ("/");
 
             } else {
-
                 return req.flash('danger', 'algo salio mal');
-
                 }
                 
         }
-            res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
+            res.redirect("/login?failed=true"); 
         
         })
-        .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
+        .catch((error) => { 
            console.log(error)
             throw error
         })
         
     },
 
-    /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */
+
 
     register: function(req, res) {
         if(req.method == "POST") {
@@ -64,7 +62,6 @@ let securityController = {
             }
             db.User.create(newUser)
             .then (() => {
-
                 // req.flash('info', 'User registered succesful');
                 res.redirect("/login");
             })
@@ -81,7 +78,7 @@ let securityController = {
 
     logout: function(req, res) {
         req.session.destroy();
-        res.clearCookie("userId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
+        res.clearCookie("userId"); 
         return res.redirect("/");
     }
 
