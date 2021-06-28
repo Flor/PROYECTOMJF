@@ -26,13 +26,7 @@ let indexController = {
         })
         .then((resultado)=>{
             db.Product.findAll({})
-            /*let masComentados= resultado.sort((a,b)=> {
-                if(a.cantidad_comentarios < b.cantidad_comentarios) {return 1}
-                else {return -1}
-            })*/
-            
-            return res.render ('index', 
-            {result: resultado, /*masComentados: masComentados*/})})   
+           return res.render ('index', {result: resultado})})   
         .catch ((error)=>{
             res.send(error)
         })
@@ -53,7 +47,9 @@ let indexController = {
                 {association: "usuario"}
             ]
             })
-        .then((resultado)=>{return res.render ('search', {result: resultado})})   
+        .then((resultado)=>{
+            return res.render ('search', {result: resultado})
+        })   
         .catch ((error)=>{
             res.send(error)
         })
