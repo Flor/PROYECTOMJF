@@ -8,7 +8,7 @@ let usersController = {
         db.User.findAll({
             include: [{association: "comentarios"}]
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.render('users/usersIndex', { 
                 result: resultado 
             });
