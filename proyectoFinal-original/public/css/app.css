@@ -486,6 +486,7 @@ h2.col-12 {
   background-color: orangered;
   font-size: large;
   font-weight: 800;
+  cursor:grab
 }
 
 /*====== Profile ======*/
@@ -557,7 +558,7 @@ color: white;
   font-size: 1.8em;
 }
 
-
+p h3 h4 h2 {cursor:auto;}
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {

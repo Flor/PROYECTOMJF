@@ -33,23 +33,27 @@
 			
 		
 
-		<% if (locals.user) { %>
-		<p class="product-detail-description">
-			<a href="/product/add"> Agregar nuevo producto </a>
-		</p>
-		<% } %>
+		
 
 
 		<% if (locals.user && locals.user.id == result.id_usuario) { %>
+
+
+			<a href="/product/edit/<%= result.id %>">
+				<button class="button-orange">Editar producto</button>
+			</a>
+			<a href="/product/delete/<%= result.id %>">
+				<button class="button-orange">Eliminar producto</button>
+			</a>
 	
-			<p class="product-detail-description">
+			<!-- <p class="product-detail-description">
 			
 				<a href="/product/edit/<%= result.id %>"> Editar producto </a>
 			</p>
 
 			<p class="product-detail-description">
 				<a href="/product/delete/<%= result.id %>"> Eliminar producto </a>
-			</p>
+			</p> -->
 		<% } %>
 		
 

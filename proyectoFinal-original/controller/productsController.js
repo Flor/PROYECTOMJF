@@ -64,7 +64,7 @@ let productsController = {
         .catch((error) => {
             return res.send(error);
         })
-    },
+},
     productEdited: function (req, res) {
         let newProduct = {
             foto_producto: '/images/' + req.file.filename,
@@ -117,7 +117,7 @@ let productsController = {
         .catch((error) => {
             return res.send(error);
         })
-    },
+},
 
      delete: function (req, res) {
          let usuario = db.User.findByPk(req.session.user.id)
@@ -130,7 +130,7 @@ let productsController = {
         .catch((error) => {
             return res.send(error);
         })
-    }, 
+}, 
 }
 
 module.exports = productsController;
