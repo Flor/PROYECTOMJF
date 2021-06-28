@@ -32,7 +32,7 @@ let securityController = {
            if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.user = user; 
                 if (req.body.rememberme) {
-                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) //maxAge esta configurado en 1000 segundos
+                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) 
                 }
                 return res.redirect ("/");
 
