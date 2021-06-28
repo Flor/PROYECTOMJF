@@ -1,3 +1,4 @@
+const { eq } = require("sequelize/types/lib/operators");
 let db = require("../database/models");
 const op = db.Sequelize.Op;
 
@@ -64,6 +65,29 @@ let productsController = {
             return res.send(error);
         })
     },
+    productEdited: function(req,res) {
+        let editedProduct = {
+            marca: req.body.marca,
+            modelo:req.body.modelo,
+            descripcion: req.body.descripcion
+    };
+    if (req.file) {
+        foto_producto.url_imagen = '/images/' + req.file.filename;
+    }
+    db.Product.update (foto_producto,{
+        where: {
+            id:req.params.id
+        }
+    })
+    .then(() => {
+        req.flash ('succes', "Producto editado correctamente");
+        return res.redirect('/product/')
+    })
+    .catch((error) => {
+        next(error)
+        req.flash ('danger', "No se ha podido editar el producto");
+    })
+},
 
 
     comment: function (req, res) {
