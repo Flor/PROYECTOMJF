@@ -48,7 +48,7 @@ let indexController = {
             ]
             })
         .then((resultado)=>{
-            return res.render ('search', {result: resultado})
+             res.render ('search', {result: resultado})
         })   
         .catch ((error)=>{
             res.send(error)

@@ -40,14 +40,20 @@ let usersController = {
         })
     },
     
-    
-    profileEdit: function (req, res) {
-        let id = req.params.id;
-            return res.render ('profileEdit', { 
-                result: resultado 
-            })           
-    },
 
+    profileEdit: function (req, res) {
+        db.User.findByPk(req.params.id)
+        .then((data) => {
+            return res.render('profileEdit', { 
+            result: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+    },
+    
+   
     profileEdited: function (req,res) {
         if (req.method = 'POST'){
             let editedProfile = {
@@ -68,9 +74,11 @@ let usersController = {
                 id: req.params.id
             }
         })
-        .then(() => {
+        .then((data) => {
             req.flash ('success', 'Perfil editado correctamente');
-            res.redirect ('/users/profile' + re1.params.id)
+            res.redirect ('/profile' + req.params.id, { 
+                result: data 
+            })
         })
         .catch (() => {
             next(error)
