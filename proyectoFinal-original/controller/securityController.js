@@ -44,7 +44,7 @@ let securityController = {
             res.redirect("/login?failed=true"); 
         
         })
-        .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
+        .catch((error) => { 
            console.log(error)
             throw error
         })
