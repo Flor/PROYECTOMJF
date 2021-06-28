@@ -10,7 +10,7 @@ let usersController = {
         })
         .then((data) => {
             return res.render('users/usersIndex', { 
-                users: data 
+                result: data 
             });
         })
         .catch((error) => {

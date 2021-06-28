@@ -57,7 +57,7 @@ let productsController = {
         db.Product.findByPk(req.params.id)
         .then((data) => {
             return res.render('productEdit', { 
-            product: data 
+            result: data 
             });
         })
         .catch((error) => {

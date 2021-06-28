@@ -6,10 +6,8 @@
 
 <body>
 	
-
 		<%- include('./partials/headerLogueado') %>
 		
-
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -18,22 +16,32 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			
-				<form class="font-impact-white" action="/profile" method="GET">
+				<form class="formulario" action="/profile/<%= result.id %>" method="POST" enctype="multipart/form-data">
 
 					<p>
-					<label for="nombre"> Nombre del producto: </label>
-					<input type="text" name="nombre" id="nombre">
+						<label for="nombre"> Marca del producto: </label>
+						<input type="text" name="marca" id="marca" value= <%= result.marca %>>
 					</p>
 
 					<p>
-					<label for="imagen"> Imagen: </label>
-					<input type="file" name="imagen" id="imagen">
+						<label for="modelo"> Modelo del producto: </label>
+						<input type="text" name="modelo" id="modelo" value= <%= result.modelo %>>
 					</p>
 
 					<p>
-					<label for="descripción"> Descripcion: </label>
-					<input type="text" name="descripción" id="descripción">
+						<label for="imagen"> Imagen: </label>
+						<input type="file" name="foto_producto" id="foto_producto" value= <%= result.foto_producto %>>
 					</p>
+					<% if (!result.foto_producto) { %>
+						<img src="<%= result.foto_producto %> " alt="">
+					<% } %>
+ 
+					<p>
+						<label for="descripcion"> Descripcion: </label>
+						<input type="text" name="descripcion" id="descripcion" value= <%= result.descripcion %>>
+					</p>
+
+				
 
 					<p>
 						<a href="/" class="button-orange" type="submit" > EDITAR PRODUCTO </a>
