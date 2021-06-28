@@ -10,7 +10,7 @@ let usersController = {
         })
         .then((data) => {
             return res.render('users/usersIndex', { 
-                result: data 
+                result: resultado 
             });
         })
         .catch((error) => {
@@ -33,9 +33,7 @@ let usersController = {
                     'usuario' : user,
                     'imagen': user.fotoPerfil, 
                     'idUsuario': user.id,
-                    
                 });
-           
         })
         .catch ((error) => {
             return res.send(error);
@@ -45,8 +43,9 @@ let usersController = {
     
     profileEdit: function (req, res) {
         let id = req.params.id;
-            return res.render ('profileEdit') 
-                
+            return res.render ('profileEdit', { 
+                result: resultado 
+            })           
     },
 
     profileEdited: function (req,res) {
