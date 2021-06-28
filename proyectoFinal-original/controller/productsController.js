@@ -1,4 +1,4 @@
-const { eq } = require("sequelize/types/lib/operators");
+// const { eq } = require("sequelize/types/lib/operators");
 let db = require("../database/models");
 const op = db.Sequelize.Op;
 
@@ -65,28 +65,36 @@ let productsController = {
             return res.send(error);
         })
     },
-    productEdited: function(req,res) {
-        let editedProduct = {
+    productEdited: function (req, res) {
+        let newProduct = {
+            foto_producto: '/images/' + req.file.filename,
             marca: req.body.marca,
             modelo:req.body.modelo,
-            descripcion: req.body.descripcion
-    };
-    if (req.file) {
-        foto_producto.url_imagen = '/images/' + req.file.filename;
-    }
-    db.Product.update (foto_producto,{
-        where: {
-            id:req.params.id
+            descripcion: req.body.descripcion,
+            id_usuario: req.session.user.id,
+        };
+        db.Product.update(newProduct, {
+            where: {
+                id:req.params.id
+            }
         }
-    })
-    .then(() => {
+        )
+        .then(() => {
+            res.redirect('/')
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+
+   
+    /* .then(() => {
         req.flash ('succes', "Producto editado correctamente");
         return res.redirect('/product/')
     })
     .catch((error) => {
         next(error)
         req.flash ('danger', "No se ha podido editar el producto");
-    })
+    }) */
 },
 
 
@@ -112,15 +120,12 @@ let productsController = {
     },
 
      delete: function (req, res) {
-         let usuario = db.User.findByPk(req.session.usuario.id)
+         let usuario = db.User.findByPk(req.session.user.id)
         db.Product.destroy({
             where: {id:req.params.id}
         })
         .then((data) => {
-            usuario.update({
-                
-            })
-            return res.redirect("/profile");
+            return res.redirect("/");
         })
         .catch((error) => {
             return res.send(error);
