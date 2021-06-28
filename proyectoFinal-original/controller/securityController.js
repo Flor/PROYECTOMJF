@@ -41,7 +41,7 @@ let securityController = {
                 }
                 
         }
-            res.redirect("/login?failed=true"); /*como no quiero usar ni sessions ni locals le paso el error por GET*/
+            res.redirect("/login?failed=true"); 
         
         })
         .catch((error) => { /*findOne si no encuentrta ninguno tira error, si encuentra mas de 1 te manda el primero*/
