@@ -46,9 +46,9 @@ let productsController = {
         db.Product.findAll(
             {include: [{association: "comentarios"}, {association: "usuario"}]
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.render('allProducts', { 
-            products: data 
+            products: resultado 
         });
     })
     .catch((error) => {
@@ -58,9 +58,9 @@ let productsController = {
     
     productEdit: function (req, res) {
         db.Product.findByPk(req.params.id)
-        .then((data) => {
+        .then((resultado) => {
             return res.render('productEdit', { 
-            result: data 
+            result: resultado 
             });
         })
         .catch((error) => {
@@ -80,8 +80,7 @@ let productsController = {
             where: {
                 id:req.params.id
             }
-        }
-        )
+        })
         .then(() => {
             res.redirect('/')
         })
@@ -106,16 +105,12 @@ let productsController = {
 
         db.Comment.create(req.body, {
             order:[
-                [
-                    "fecha" , "DESC"
-                ]
+                ["fecha" , "DESC"]
             ],
         }) 
-       
-        .then((data) => {
+       .then((resultado) => {
             return res.redirect(req.get("Referrer"));
         })
-
         .catch((error) => {
             return res.send(error);
         })
@@ -126,7 +121,7 @@ let productsController = {
         db.Product.destroy({
             where: {id:req.params.id}
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.redirect("/");
         })
         .catch((error) => {

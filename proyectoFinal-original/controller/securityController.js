@@ -10,30 +10,28 @@ let securityController = {
     authenticate: function(req, res) {
         db.User.findOne({where: {email: req.body.email} }) 
         .then ((user) => {
-        if (user) {
-            let condicion = bcrypt.compareSync(req.body.password, user.password)
-            console.log(condicion)
-            console.log(req.body.password)
-           if (bcrypt.compareSync(req.body.password, user.password)) {
-                req.session.user = user; 
-                if (req.body.rememberme) {
-                    res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) 
-                }
-                return res.redirect ("/");
+            if (user) {
+                let condicion = bcrypt.compareSync(req.body.password, user.password)
+                console.log(condicion)
+                console.log(req.body.password)
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+                    req.session.user = user; 
+                    if (req.body.rememberme) {
+                        res.cookie("userId", user.id, {maxAge: 1000 * 60 * 60 * 24 * 365}) 
+                    }
+                    return res.redirect ("/");
 
-            } else {
-                return req.flash('danger', 'algo salio mal');
+                } else {
+                    return req.flash('danger', 'algo salio mal');
                 }
-                
-        }
-            res.redirect("/login?failed=true"); 
-        
-        })
+                    
+            }
+                res.redirect("/login?failed=true"); 
+            })
         .catch((error) => { 
            console.log(error)
             throw error
-        })
-        
+        })      
 },
 
     register: function(req, res) {
