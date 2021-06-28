@@ -87,16 +87,21 @@ let productsController = {
         })
     },
 
-   /*  delete: function (req, res) 
-
-        db.Comment.create(req.body)
+     delete: function (req, res) {
+         let usuario = db.User.findByPk(req.session.usuario.id)
+        db.Product.destroy({
+            where: {id:req.params.id}
+        })
         .then((data) => {
-            return res.redirect(req.get("Referrer"));
+            usuario.update({
+                
+            })
+            return res.redirect("/profile");
         })
         .catch((error) => {
             return res.send(error);
         })
-    }, */
+    }, 
 }
 
 module.exports = productsController;

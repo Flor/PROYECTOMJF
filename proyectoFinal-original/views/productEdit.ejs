@@ -6,17 +6,26 @@
 
 <body>
 	
+<<<<<<< HEAD
 		<%- include('./partials/headerLogueado') %>
+=======
+
+	<%- include('./partials/headerLogueado') %>
+>>>>>>> 4d263b1da409a302f7ae5c7de0c3b7841a89362d
 		
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title"> <%= user.nombre %> complete los datos del nuevo producto que desea editar </h2>
+				<h2 class="products-title"> <%= user.nombre %> complete los datos del producto que desea editar </h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 			
+<<<<<<< HEAD
 				<form class="formulario" action="/profile/<%= result.id %>" method="POST" enctype="multipart/form-data">
+=======
+			
+				<form class="font-impact-white" action="/profile" method="POST" enctype="multipart/form-data">
+>>>>>>> 4d263b1da409a302f7ae5c7de0c3b7841a89362d
 
 					<p>
 						<label for="nombre"> Marca del producto: </label>
@@ -44,7 +53,7 @@
 				
 
 					<p>
-						<a href="/" class="button-orange" type="submit" > EDITAR PRODUCTO </a>
+						<button class="button-orange" type="submit" value="Enviar"> ACTUALIZAR PRODUCTO </button>
 					</p>
 	
 	
