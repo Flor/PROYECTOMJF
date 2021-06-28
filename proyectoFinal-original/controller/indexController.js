@@ -30,10 +30,9 @@ let indexController = {
         .catch ((error)=>{
             res.send(error)
         })
-    },
+},
 
-   
-     search: function (req, res) {
+    search: function (req, res) {
         db.Product.findAll({
             where:{
                 [op.or]:[
@@ -53,8 +52,8 @@ let indexController = {
         .catch ((error)=>{
             res.send(error)
         })
-    },  
-   
+},  
 }
 
 module.exports = indexController;
+

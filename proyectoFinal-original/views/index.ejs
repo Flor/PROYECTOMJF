@@ -18,8 +18,6 @@
 		<img src="/images/banner2.jpg" alt="Banner de ofertas"> 
 		
 	</div>
-	<!-- /Banner -->
-
 
 	<!-- Nuevos ingresos -->
 	<div class="container products-wrapper">
@@ -27,8 +25,6 @@
 			<div class="col-12">
 				<h2 class="products-title">NUEVOS INGRESOS</h2>
 			</div>
-			
-			<!-- Show the "ultimos" products -->
 
 			<% for (let i = 0; i < 4; i++) { %> 
 				<div class="col-12 col-sm-6 col-lg-3"> 
@@ -39,47 +35,33 @@
 						   </figure>
 						   <article class="product-box_data">
 							   <h2> <%= result[i].marca + ' ' + result[i].modelo %> </h2>
-							   <h3> 
-								   Talles disponibles: <%= result[i].talle %>
-								<h3>
-								   El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre +" "+ result[i].usuario.apellido %></a>
-								</h3>
-							   </h3>
+							   <h3>Talles disponibles: <%= result[i].talle %></h3>
+								<h3>El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre +" "+ result[i].usuario.apellido %></a></h3>
 							   <div>
-								<p>Comentarios: <%=result[i].comentarios.length %>  </p> 
-								
-							  
-							  </div>
-							   
-							   									
-						   </article>
+									<p>Comentarios: <%=result[i].comentarios.length %>  </p> 
+								</div>
+							</article>
 					   </a>
 				   </section>
-				   
-			   	</div>
-
-				<% } %>   
-				
-   
+				</div>
+			<% } %>   
 		</div>
 	</div>
 	
 	
 	
 	<!-- /Mas comentados -->
-
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">MÁS COMENTADOS</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
 			
 			<% for (let i = 0; i < 8; i++) { %> 
 
 				<% if (result[i].comentarios.length > 3) { %> 
 
-						<div class="col-12 col-sm-6 col-lg-3"> 
+					<div class="col-12 col-sm-6 col-lg-3"> 
 						<section class="product-box">
 							<a href="/product/<%= result[i].id %>">
 								<figure class="product-box_image">
@@ -87,35 +69,23 @@
 								</figure>
 								<article class="product-box_data">
 									<h2> <%= result[i].marca + ' ' + result[i].modelo %> </h2>
-									<h3> 
-										Talles disponibles: <%= result[i].talle %>
-										<h3>
-											El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + " " + result[i].usuario.apellido %></a>
-
-										</h3>
-										
-									</h3>
+									<h3>Talles disponibles: <%= result[i].talle %></h3>
+									<h3>El buzo se publico el: <%= result[i].fecha_publicacion %> por <a class="link" href="/users/profile/<%= result[i].usuario.id %>"><%=result[i].usuario.nombre + " " + result[i].usuario.apellido %></a></h3>
 									<div>
 									  <p>Comentarios: <%=result[i].comentarios.length %>  </p> 
-							
-									
 									</div>
-																		
 								</article>
 							</a>
 						</section>
 						
-						</div>
+					</div>
 				<% } %> 
-			
 			<% } %>   
-				
-   
 		</div>
 	</div>
 	
 
-	<%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
 
 </body>	
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
 <%- include('./partials/head') %>
 
@@ -14,13 +13,10 @@
 
 
 	<div class="container products-wrapper">
-		
 		<div class="d-flex align-items-center">
-
 			<h2 class="products-title"> 
 				 Buzo: <%= result.marca + ' ' %>   |      
 			</h2>
-			
 			<h2 class="whitefont fontsize">
 				|  Modelo: <%= result.modelo %>
 			</h2>
@@ -30,65 +26,42 @@
 				Creado por : <a class="link" href="/users/profile/<%=result.usuario.id%>"><%= result.usuario.nombre %>    <%= result.usuario.apellido %></a>
 			</p>
 		</div>
-			
 		
-
-		
-
 
 		<% if (locals.user && locals.user.id == result.id_usuario) { %>
-
-
 			<a href="/product/edit/<%= result.id %>">
 				<button class="button-orange">Editar producto</button>
 			</a>
 			<a href="/product/delete/<%= result.id %>">
 				<button class="button-orange">Eliminar producto</button>
 			</a>
-	
-			<!-- <p class="product-detail-description">
-			
-				<a href="/product/edit/<%= result.id %>"> Editar producto </a>
-			</p>
-
-			<p class="product-detail-description">
-				<a href="/product/delete/<%= result.id %>"> Eliminar producto </a>
-			</p> -->
 		<% } %>
 		
 
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					
-				
 					<img src="<%= result.foto_producto%>" alt="" class="product-detail-img">
 					<p class="product-detail-description"> Descripción: <%= result.descripcion %> </p>
 				</article>
-
 				<div class="col-12 col-lg-4">
-				
-				<section class="comments">					
-					<% for (let i = 0; i < result.comentarios.length; i++) { %> 
-
-							<article>
-								
-								<a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> ">
-									<img src="/images/<%=  result.comentarios[i].usuarios.fotodeperfil %> " alt="">
-								</a>
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> "> 
-										<%= result.comentarios[i].usuarios.nombre %>
-									</a> </strong>
-
-									<%= result.comentarios[i].comentario %>
-									</p>
-								</div>
-							</article>
-
-				<% } %>
-
+					<section class="comments">					
+						<% for (let i = 0; i < result.comentarios.length; i++) { %> 
+								<article>
+									<a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> ">
+										<img src="/images/<%=  result.comentarios[i].usuarios.fotodeperfil %> " alt="">
+									</a>
+									<div class="data">
+										<p class="user">
+											<strong> 
+												<a href="/users/profile/ <%= result.comentarios[i].usuarios.id%> "> 
+												<%= result.comentarios[i].usuarios.nombre %></a> 
+											</strong>
+											<%= result.comentarios[i].comentario %>
+										</p>
+									</div>
+								</article>
+						<% } %>
 					</section>
 
 					<% if (locals.user) { %>
@@ -99,15 +72,11 @@
 					<% } else { %>
 						<a href="/login"><button class="button-orange"> Inicia sesión para comentar!</button></a>
 					<% } %>
-					
-
 					<hr>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- /product detail -->
-
 	
 <%- include('./partials/footer') %>
 

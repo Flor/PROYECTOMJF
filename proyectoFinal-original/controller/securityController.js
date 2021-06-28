@@ -1,26 +1,11 @@
 let db = require("../database/models");
 const bcrypt = require("bcryptjs");
 
-/* let securityController = {
-    login: async function(req, res, next) {
-        let user = await db.User.findOne({where: {username: req.body.username} });
-        if (user && bcrypt.compareSync (req.body.password, user.password)) {
-       
-        if(req.body.rememberme) {
-           res.cookie('user',userId)
-           }
-            req.flash('info', 'welcome!');
-            req.session.user = user;
-           
-           } else { req.flash ('danger', 'usuario no registrado');
-    };
- */
 
 let securityController = {
     login: function(req, res) {
         return res.render ("security/login", {failed: req.query.failed, fraseerror: "Hubo un error al ingresar sus datos"}); 
-    },
-
+},
 
     authenticate: function(req, res) {
         db.User.findOne({where: {email: req.body.email} }) 
@@ -49,9 +34,7 @@ let securityController = {
             throw error
         })
         
-    },
-
-
+},
 
     register: function(req, res) {
         if(req.method == "POST") {
@@ -73,15 +56,13 @@ let securityController = {
         if(req.method == "GET") {
             return res.render("security/register");
         }
-        },
-        /*register en un solo metodo es mejor porque le puedo pasar variables en comun, y puedo compartir funciones entre ellos, puedo hacer cosas en comun*/
-
+},
+       
     logout: function(req, res) {
         req.session.destroy();
         res.clearCookie("userId"); 
         return res.redirect("/");
-    }
-
+}
 }
 
 module.exports = securityController;

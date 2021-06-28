@@ -5,7 +5,6 @@ const path = require('path');
 
 const securityController = require ("../controller/securityController");
 
-
 const storage = multer.diskStorage({
      destination: (req,file,cb) => {
          cb(null, './public/images/')

@@ -16,7 +16,7 @@ let usersController = {
         .catch((error) => {
             return res.send(error);
         })
-  },
+},
 
     profile: function (req, res, next) {
         db.User.findByPk(req.params.id, {
@@ -38,9 +38,8 @@ let usersController = {
         .catch ((error) => {
             return res.send(error);
         })
-    },
+},
     
-
     profileEdit: function (req, res) {
         db.User.findByPk(req.params.id)
         .then((data) => {
@@ -51,9 +50,8 @@ let usersController = {
         .catch((error) => {
             return res.send(error);
         })
-    },
+},
     
-   
     profileEdited: function (req,res) {
         if (req.method = 'POST'){
             let editedProfile = {
@@ -88,15 +86,15 @@ let usersController = {
         if (req.method == 'GET'){
             return res.render('profileEdit');
         }
-    },
+},
 
     register: function(req, res) {
         return res.render ('register')
-    },
+},
 
     login: function(req, res) {
         return res.render ('login')
-     },
+},
 }
 
 module.exports = usersController;

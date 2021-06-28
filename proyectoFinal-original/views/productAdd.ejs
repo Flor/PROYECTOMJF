@@ -6,18 +6,13 @@
 
 <body>
 	
-
 	<%- include('./partials/headerLogueado') %>
 	
-
-	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Porfavor complete los datos del nuevo producto que desea agregar </h2>
 			</div>
-			<!-- Show the "ultimos" products -->
-		
 				<form class="formulario" enctype="multipart/form-data" method="POST" style= "color: white;">
 
 					<p>
@@ -47,23 +42,18 @@
 					</p>
 
 					<p>
-					<label for="foto_producto"> Agrega foto del producto: </label>
-        			<input type="file" name="foto_producto" id="foto_producto">	
+						<label for="foto_producto"> Agrega foto del producto: </label>
+						<input type="file" name="foto_producto" id="foto_producto">	
 					</p>
-
 					
 					<p>
 						<button class="button-orange" type="submit" value="Enviar"> Agregar producto </button>
 					</p>
-	
-	
 				</form>
-
 		</div>	
 	</div>	
 
-	<%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
 	
 </body>
-
 </html>

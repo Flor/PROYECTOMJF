@@ -15,17 +15,12 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-
-
 router.get('/profile/:id', usersController.profile);
 router.get('/profileEdit/:id', usersController.profileEdit);
 router.post('/profileEdit/:id',upload.single('fotodeperfil'), usersController.profileEdited);
-
-
 
 module.exports = router;

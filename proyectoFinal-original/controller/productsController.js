@@ -18,10 +18,11 @@ let productsController = {
             return res.send(error);
         })
 },
+    
     productAdd: function (req, res) {
             return res.render('productAdd')
-             
 },
+    
     store: function (req, res) {
         let newProduct = {
             foto_producto: '/images/' + req.file.filename,
@@ -43,7 +44,7 @@ let productsController = {
 
    allProducts: function (req, res) {
         db.Product.findAll(
-            {include: [{association: "comentarios"}]
+            {include: [{association: "comentarios"}, {association: "usuario"}]
         })
         .then((data) => {
             return res.render('allProducts', { 
@@ -54,6 +55,7 @@ let productsController = {
         return res.send(error);
     })
 },
+    
     productEdit: function (req, res) {
         db.Product.findByPk(req.params.id)
         .then((data) => {
@@ -65,6 +67,7 @@ let productsController = {
             return res.send(error);
         })
 },
+    
     productEdited: function (req, res) {
         let newProduct = {
             foto_producto: '/images/' + req.file.filename,
@@ -97,7 +100,6 @@ let productsController = {
     }) */
 },
 
-
     comment: function (req, res) {
         req.body.id_usuario = req.session.user.id
         req.body.id_producto = req.params.id
@@ -119,7 +121,7 @@ let productsController = {
         })
 },
 
-     delete: function (req, res) {
+    delete: function (req, res) {
          let usuario = db.User.findByPk(req.session.user.id)
         db.Product.destroy({
             where: {id:req.params.id}
