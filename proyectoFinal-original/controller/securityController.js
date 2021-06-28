@@ -23,7 +23,7 @@ let securityController = {
 
 
     authenticate: function(req, res) {
-        db.User.findOne({where: {email: req.body.email} /*(usemos username nosotros)*/}) 
+        db.User.findOne({where: {email: req.body.email} }) 
         .then ((user) => {
         if (user) {
             let condicion = bcrypt.compareSync(req.body.password, user.password)
@@ -37,9 +37,7 @@ let securityController = {
                 return res.redirect ("/");
 
             } else {
-
                 return req.flash('danger', 'algo salio mal');
-
                 }
                 
         }
@@ -64,7 +62,6 @@ let securityController = {
             }
             db.User.create(newUser)
             .then (() => {
-
                 // req.flash('info', 'User registered succesful');
                 res.redirect("/login");
             })
