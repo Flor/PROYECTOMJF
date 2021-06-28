@@ -8,9 +8,9 @@ let usersController = {
         db.User.findAll({
             include: [{association: "comentarios"}]
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.render('users/usersIndex', { 
-                result: data 
+                result: resultado 
             });
         })
         .catch((error) => {
@@ -33,9 +33,7 @@ let usersController = {
                     'usuario' : user,
                     'imagen': user.fotoPerfil, 
                     'idUsuario': user.id,
-                    
                 });
-           
         })
         .catch ((error) => {
             return res.send(error);
@@ -45,7 +43,43 @@ let usersController = {
     
     profileEdit: function (req, res) {
         let id = req.params.id;
-            return res.render ('profileEdit')
+            return res.render ('profileEdit', { 
+                result: resultado 
+            })           
+    },
+
+    profileEdited: function (req,res) {
+        if (req.method = 'POST'){
+            let editedProfile = {
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            email:req.body.email,
+            password: req.body.password,
+            };
+        if (req.file) {
+            editedProfile.fotodeperfil = '/images/' + req.file.filename;
+        }
+        if (req.fecha_nacimiento) {
+            editedProfile.fecha_nacimiento = req.body.fecha_nacimiento;
+        }
+
+        db.User.update(editedProfile, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(() => {
+            req.flash ('success', 'Perfil editado correctamente');
+            res.redirect ('/users/profile' + re1.params.id)
+        })
+        .catch (() => {
+            next(error)
+            req.flash ('danger', 'Algo salió mal');
+        })
+        }
+        if (req.method == 'GET'){
+            return res.render('profileEdit');
+        }
     },
 
     register: function(req, res) {
