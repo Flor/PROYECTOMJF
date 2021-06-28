@@ -51,7 +51,7 @@ let securityController = {
         
     },
 
-    /*como creo mi primer usuario?. si yo hasheo las contraseñas.. */
+
 
     register: function(req, res) {
         if(req.method == "POST") {
@@ -78,7 +78,7 @@ let securityController = {
 
     logout: function(req, res) {
         req.session.destroy();
-        res.clearCookie("userId"); //Destruye la cookie(pero solo si hace log out, si no hace log out te queda iniciado sesion)
+        res.clearCookie("userId"); 
         return res.redirect("/");
     }
 
