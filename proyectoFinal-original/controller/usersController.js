@@ -52,7 +52,7 @@ let usersController = {
         })
 },
     
-    profileEdited: function (req,res) {
+    profileEdited: function (req,res, next) {
         if (req.method = 'POST'){
             let editedProfile = {
             nombre: req.body.nombre,
@@ -74,9 +74,7 @@ let usersController = {
         })
         .then((data) => {
             req.flash ('success', 'Perfil editado correctamente');
-            res.redirect ('/profile' + req.params.id, { 
-                result: data 
-            })
+            res.redirect ("/")
         })
         .catch (() => {
             next(error)

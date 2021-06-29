@@ -13,7 +13,7 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			
-				<form class="formulario" id=formulario action="/profile/<%= result.id %>"  enctype="multipart/form-data" method="POST" style= "color: white;">
+				<form class="formulario" id=formulario action="/users/profileEdit/<%= locals.user.id %>"  enctype="multipart/form-data" method="POST" style= "color: white;">
 
 					<p>
 					<label for="nombre"> Nombre:</label>

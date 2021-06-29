@@ -70,12 +70,15 @@ let productsController = {
     
     productEdited: function (req, res) {
         let newProduct = {
-            foto_producto: '/images/' + req.file.filename,
             marca: req.body.marca,
             modelo:req.body.modelo,
             descripcion: req.body.descripcion,
             id_usuario: req.session.user.id,
         };
+        if (req.file) {
+            newProduct.foto_producto = '/images/' + req.file.filename;
+        }
+
         db.Product.update(newProduct, {
             where: {
                 id:req.params.id
@@ -88,15 +91,6 @@ let productsController = {
             return res.send(error);
         })
 
-   
-    /* .then(() => {
-        req.flash ('succes', "Producto editado correctamente");
-        return res.redirect('/product/')
-    })
-    .catch((error) => {
-        next(error)
-        req.flash ('danger', "No se ha podido editar el producto");
-    }) */
 },
 
     comment: function (req, res) {
@@ -137,4 +131,4 @@ module.exports = productsController;
 
 
 
-    
+
