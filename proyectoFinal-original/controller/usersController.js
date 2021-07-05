@@ -16,7 +16,7 @@ let usersController = {
         .catch((error) => {
             return res.send(error);
         })
-  },
+},
 
     profile: function (req, res, next) {
         db.User.findByPk(req.params.id, {
@@ -38,17 +38,21 @@ let usersController = {
         .catch ((error) => {
             return res.send(error);
         })
-    },
-    
+},
     
     profileEdit: function (req, res) {
-        let id = req.params.id;
-            return res.render ('profileEdit', { 
-                result: resultado 
-            })           
-    },
-
-    profileEdited: function (req,res) {
+        db.User.findByPk(req.params.id)
+        .then((data) => {
+            return res.render('profileEdit', { 
+            result: data 
+            });
+        })
+        .catch((error) => {
+            return res.send(error);
+        })
+},
+    
+    profileEdited: function (req,res, next) {
         if (req.method = 'POST'){
             let editedProfile = {
             nombre: req.body.nombre,
@@ -68,9 +72,9 @@ let usersController = {
                 id: req.params.id
             }
         })
-        .then(() => {
+        .then((data) => {
             req.flash ('success', 'Perfil editado correctamente');
-            res.redirect ('/users/profile' + re1.params.id)
+            res.redirect ("/")
         })
         .catch (() => {
             next(error)
@@ -80,15 +84,15 @@ let usersController = {
         if (req.method == 'GET'){
             return res.render('profileEdit');
         }
-    },
+},
 
     register: function(req, res) {
         return res.render ('register')
-    },
+},
 
     login: function(req, res) {
         return res.render ('login')
-     },
+},
 }
 
 module.exports = usersController;

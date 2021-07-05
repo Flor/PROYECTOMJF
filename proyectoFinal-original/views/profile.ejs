@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
 <%- include('./partials/head') %>
 
@@ -12,7 +11,6 @@
 		<%- include('./partials/header') %>
 	<% } %>
 
-	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
@@ -21,9 +19,10 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= usuario.nombre %>  <%= usuario.apellido %> 
-						<a href="/users/profileEdit"> 
+						<a href="/users/profileEdit/<%= usuario.id %>"> 
 							<i class="fas fa-cog"></i>
 						</a>
+
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
@@ -37,8 +36,6 @@
 		</div>
 	</section>
 
-
-	<!-- Mis productos -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -61,9 +58,8 @@
 			<% } %>
 		</div>
 	</div>
-	<!-- /Mis productos -->
 
-	<%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
 	
 </body>	
 </html>

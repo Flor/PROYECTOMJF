@@ -8,32 +8,23 @@ let indexController = {
     index : function(req, res) {
         db.Product.findAll({
             include: [
-                {
-                    association: 'comentarios'
-                },
-               {
-                   association: "usuario"
-                }
-              
-
+                {association: 'comentarios'},
+                {association: "usuario"}
             ],
             order:[
-                [
-                    "fecha_publicacion" , "DESC"
-                ]
+                ["fecha_publicacion" , "DESC"]
             ],
-           
         })
         .then((resultado)=>{
             db.Product.findAll({})
-           return res.render ('index', {result: resultado})})   
+           return res.render ('index', {result: resultado})
+        })   
         .catch ((error)=>{
             res.send(error)
         })
-    },
+},
 
-   
-     search: function (req, res) {
+    search: function (req, res) {
         db.Product.findAll({
             where:{
                 [op.or]:[
@@ -41,20 +32,19 @@ let indexController = {
                     {modelo:{[op.like]:'%' + req.query.search + '%'}},
                     {descripcion:{[op.like]:'%' + req.query.search + '%'}}  
                 ]
-               
             },
             include: [
                 {association: "usuario"}
             ]
             })
         .then((resultado)=>{
-            return res.render ('search', {result: resultado})
+             res.render ('search', {result: resultado})
         })   
         .catch ((error)=>{
             res.send(error)
         })
-    },  
-   
+},  
 }
 
 module.exports = indexController;
+

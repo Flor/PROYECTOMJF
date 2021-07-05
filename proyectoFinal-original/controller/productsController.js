@@ -18,10 +18,11 @@ let productsController = {
             return res.send(error);
         })
 },
+    
     productAdd: function (req, res) {
             return res.render('productAdd')
-             
 },
+    
     store: function (req, res) {
         let newProduct = {
             foto_producto: '/images/' + req.file.filename,
@@ -43,42 +44,46 @@ let productsController = {
 
    allProducts: function (req, res) {
         db.Product.findAll(
-            {include: [{association: "comentarios"}]
+            {include: [{association: "comentarios"}, {association: "usuario"}]
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.render('allProducts', { 
-            products: data 
+            products: resultado 
         });
     })
     .catch((error) => {
         return res.send(error);
     })
 },
+    
     productEdit: function (req, res) {
         db.Product.findByPk(req.params.id)
-        .then((data) => {
+        .then((resultado) => {
             return res.render('productEdit', { 
-            result: data 
+            result: resultado 
             });
         })
         .catch((error) => {
             return res.send(error);
         })
 },
+    
     productEdited: function (req, res) {
         let newProduct = {
-            foto_producto: '/images/' + req.file.filename,
             marca: req.body.marca,
             modelo:req.body.modelo,
             descripcion: req.body.descripcion,
             id_usuario: req.session.user.id,
         };
+        if (req.file) {
+            newProduct.foto_producto = '/images/' + req.file.filename;
+        }
+
         db.Product.update(newProduct, {
             where: {
                 id:req.params.id
             }
-        }
-        )
+        })
         .then(() => {
             res.redirect('/')
         })
@@ -86,17 +91,7 @@ let productsController = {
             return res.send(error);
         })
 
-   
-    /* .then(() => {
-        req.flash ('succes', "Producto editado correctamente");
-        return res.redirect('/product/')
-    })
-    .catch((error) => {
-        next(error)
-        req.flash ('danger', "No se ha podido editar el producto");
-    }) */
 },
-
 
     comment: function (req, res) {
         req.body.id_usuario = req.session.user.id
@@ -104,27 +99,23 @@ let productsController = {
 
         db.Comment.create(req.body, {
             order:[
-                [
-                    "fecha" , "DESC"
-                ]
+                ["fecha" , "DESC"]
             ],
         }) 
-       
-        .then((data) => {
+       .then((resultado) => {
             return res.redirect(req.get("Referrer"));
         })
-
         .catch((error) => {
             return res.send(error);
         })
 },
 
-     delete: function (req, res) {
+    delete: function (req, res) {
          let usuario = db.User.findByPk(req.session.user.id)
         db.Product.destroy({
             where: {id:req.params.id}
         })
-        .then((data) => {
+        .then((resultado) => {
             return res.redirect("/");
         })
         .catch((error) => {
@@ -140,4 +131,4 @@ module.exports = productsController;
 
 
 
-    
+

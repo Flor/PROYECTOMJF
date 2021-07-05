@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Include Head -->
 
 <%- include('./partials/head') %>
 
 <body>
 	
-		<%- include('./partials/headerLogueado') %>
+	<%- include('./partials/headerLogueado') %>
 		
-	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title"> <%= user.nombre %> complete los datos del producto que desea editar </h2>
 			</div>
-			
-				<form class="formulario whitefont" action="/profile/<%= result.id %>" method="POST" enctype="multipart/form-data">
+				<form class="formulario whitefont" action="/product/edit/<%= result.id %>" method="POST" enctype="multipart/form-data">
 
 					<p>
 						<label for="nombre"> Marca del producto: </label>
@@ -31,6 +28,7 @@
 						<label for="imagen"> Imagen: </label>
 						<input type="file" name="foto_producto" id="foto_producto" value= <%= result.foto_producto %>>
 					</p>
+
 					<% if (!result.foto_producto) { %>
 						<img src="<%= result.foto_producto %> " alt="">
 					<% } %>
@@ -40,20 +38,15 @@
 						<input type="text" name="descripcion" id="descripcion" value= <%= result.descripcion %>>
 					</p>
 
-				
-
 					<p>
 						<button class="button-orange" type="submit" value="Enviar"> ACTUALIZAR PRODUCTO </button>
 					</p>
-	
-	
-				</form>
 
+				</form>
 		</div>	
 	</div>	
 
-	<%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
 	
 </body>
-
 </html>
